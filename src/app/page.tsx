@@ -7,7 +7,7 @@ export default function Home() {
       <PortfolioHero />
 
       {/* About */}
-      <section id="about" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
+      <section id="about" className="py-24 px-6 bg-transparent text-foreground">
         <div className="max-w-5xl mx-auto">
           <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/10 dark:bg-black/60 backdrop-blur-sm supports-[backdrop-filter]:backdrop-blur-md p-8 md:p-10 space-y-8">
             <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white">About Me</h2>
