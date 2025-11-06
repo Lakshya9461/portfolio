@@ -10,7 +10,7 @@ export default function Home() {
       <section id="about" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
         <div className="max-w-5xl mx-auto">
           <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/10 dark:bg-black/60 backdrop-blur-sm supports-[backdrop-filter]:backdrop-blur-md p-8 md:p-10 space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold">About Me</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white">About Me</h2>
             <div className="space-y-6">
             <p className="text-neutral-700 dark:text-neutral-300 text-lg leading-relaxed">
               I'm a student at <strong className="text-black dark:text-white font-semibold">JK Lakshmipat University</strong> exploring the human side of artificial intelligence. 
