@@ -57,7 +57,7 @@ export function PortfolioHero() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors" id="home">
+    <div className="min-h-screen bg-transparent text-foreground transition-colors" id="home">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 px-6 py-6">
         <nav className="flex items-center justify-between max-w-screen-2xl mx-auto">
