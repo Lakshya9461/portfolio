@@ -12,19 +12,19 @@ export default function Home() {
           <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/10 dark:bg-black/60 backdrop-blur-sm supports-[backdrop-filter]:backdrop-blur-md p-8 md:p-10 space-y-8">
             <h2 className="text-3xl md:text-4xl font-bold">About Me</h2>
             <div className="space-y-6">
-            <p className="text-neutral-300 text-lg leading-relaxed">
-              I'm a student at <strong className="text-foreground">JK Lakshmipat University</strong> exploring the human side of artificial intelligence. 
-              My current research focuses on <strong className="text-foreground">AI ethics, emotional intelligence, and human–AI interaction</strong>—understanding 
+            <p className="text-neutral-700 dark:text-neutral-300 text-lg leading-relaxed">
+              I'm a student at <strong className="text-black dark:text-white font-semibold">JK Lakshmipat University</strong> exploring the human side of artificial intelligence. 
+              My current research focuses on <strong className="text-black dark:text-white font-semibold">AI ethics, emotional intelligence, and human–AI interaction</strong>—understanding 
               how AI systems can be designed to serve humanity with empathy and responsibility.
             </p>
-            <p className="text-neutral-300 text-lg leading-relaxed">
+            <p className="text-neutral-700 dark:text-neutral-300 text-lg leading-relaxed">
               Beyond research, I'm a builder. I develop full-stack projects from the ground up: 
-              <strong className="text-foreground"> React frontends</strong>, <strong className="text-foreground">Python backends</strong>, and 
-              <strong className="text-foreground"> Docker-based deployments</strong>. I'm passionate about self-hosting—running my own infrastructure 
+              <strong className="text-black dark:text-white font-semibold"> React frontends</strong>, <strong className="text-black dark:text-white font-semibold">Python backends</strong>, and 
+              <strong className="text-black dark:text-white font-semibold"> Docker-based deployments</strong>. I'm passionate about self-hosting—running my own infrastructure 
               gives me control, privacy, and deep insight into how systems work at every layer.
             </p>
-            <p className="text-neutral-300 text-lg leading-relaxed">
-              I believe the future of technology lies in <strong className="text-foreground">thoughtful engineering</strong>—systems that are both 
+            <p className="text-neutral-700 dark:text-neutral-300 text-lg leading-relaxed">
+              I believe the future of technology lies in <strong className="text-black dark:text-white font-semibold">thoughtful engineering</strong>—systems that are both 
               technically sophisticated and genuinely useful. Whether it's voice-controlled AI assistants, secure home servers, 
               or media platforms, I build to learn, and I learn to build better.
             </p>
