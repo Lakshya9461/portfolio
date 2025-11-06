@@ -7,10 +7,11 @@ export default function Home() {
       <PortfolioHero />
 
       {/* About */}
-  <section id="about" className="py-24 px-6 bg-background text-foreground">
-        <div className="max-w-5xl mx-auto space-y-8">
-          <h2 className="text-3xl md:text-4xl font-bold">About Me</h2>
-          <div className="space-y-6">
+      <section id="about" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
+        <div className="max-w-5xl mx-auto">
+          <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/10 dark:bg-black/60 backdrop-blur-sm supports-[backdrop-filter]:backdrop-blur-md p-8 md:p-10 space-y-8">
+            <h2 className="text-3xl md:text-4xl font-bold">About Me</h2>
+            <div className="space-y-6">
             <p className="text-neutral-300 text-lg leading-relaxed">
               I'm a student at <strong className="text-foreground">JK Lakshmipat University</strong> exploring the human side of artificial intelligence. 
               My current research focuses on <strong className="text-foreground">AI ethics, emotional intelligence, and human–AI interaction</strong>—understanding 
@@ -27,31 +28,32 @@ export default function Home() {
               technically sophisticated and genuinely useful. Whether it's voice-controlled AI assistants, secure home servers, 
               or media platforms, I build to learn, and I learn to build better.
             </p>
-          </div>
+            </div>
 
-          {/* Key Areas */}
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            <div className="p-6 rounded-lg bg-white/5 border border-white/10 hover:border-[#C3E41D]/50 transition-colors">
-              <div className="text-2xl mb-3">🧠</div>
-              <h3 className="font-semibold text-lg mb-2 text-foreground">AI Research</h3>
-              <p className="text-neutral-400 text-sm">Exploring emotional AI, ethics, and human-centered design in machine learning systems.</p>
-            </div>
-            <div className="p-6 rounded-lg bg-white/5 border border-white/10 hover:border-[#C3E41D]/50 transition-colors">
-              <div className="text-2xl mb-3">⚙️</div>
-              <h3 className="font-semibold text-lg mb-2 text-foreground">Full-Stack Development</h3>
-              <p className="text-neutral-400 text-sm">Building production-ready applications with modern web frameworks and cloud-native tools.</p>
-            </div>
-            <div className="p-6 rounded-lg bg-white/5 border border-white/10 hover:border-[#C3E41D]/50 transition-colors">
-              <div className="text-2xl mb-3">🖥️</div>
-              <h3 className="font-semibold text-lg mb-2 text-foreground">Self-Hosted Infrastructure</h3>
-              <p className="text-neutral-400 text-sm">Managing home servers, VPNs, media platforms, and secure remote access solutions.</p>
+            {/* Key Areas */}
+            <div className="grid md:grid-cols-3 gap-6 mt-10">
+              <div className="p-6 rounded-lg bg-white/30 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-[#C3E41D]/50 transition-colors">
+                <div className="text-2xl mb-3">🧠</div>
+                <h3 className="font-semibold text-lg mb-2 text-foreground">AI Research</h3>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Exploring emotional AI, ethics, and human-centered design in machine learning systems.</p>
+              </div>
+              <div className="p-6 rounded-lg bg-white/30 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-[#C3E41D]/50 transition-colors">
+                <div className="text-2xl mb-3">⚙️</div>
+                <h3 className="font-semibold text-lg mb-2 text-foreground">Full-Stack Development</h3>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Building production-ready applications with modern web frameworks and cloud-native tools.</p>
+              </div>
+              <div className="p-6 rounded-lg bg-white/30 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-[#C3E41D]/50 transition-colors">
+                <div className="text-2xl mb-3">🖥️</div>
+                <h3 className="font-semibold text-lg mb-2 text-foreground">Self-Hosted Infrastructure</h3>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Managing home servers, VPNs, media platforms, and secure remote access solutions.</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Projects */}
-  <section id="projects" className="py-24 px-6 bg-background text-foreground">
+  <section id="projects" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-neutral-400 text-lg mb-10 max-w-3xl">
@@ -131,7 +133,7 @@ export default function Home() {
       </section>
 
       {/* Skills */}
-  <section id="skills" className="py-24 px-6 bg-background text-foreground">
+  <section id="skills" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
         <div className="max-w-6xl mx-auto space-y-10">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
@@ -157,7 +159,6 @@ export default function Home() {
               </h3>
               <ul className="text-neutral-400 space-y-2 pl-6">
                 <li>• Python (primary: automation, backends, AI)</li>
-                <li>• JavaScript/TypeScript (React, Next.js)</li>
                 <li>• C (systems programming)</li>
                 <li>• VHDL (hardware description)</li>
               </ul>
@@ -211,7 +212,7 @@ export default function Home() {
       </section>
 
       {/* Resume */}
-  <section id="resume" className="py-24 px-6 bg-background text-foreground">
+  <section id="resume" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">Resume & Background</h2>
           <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
@@ -220,7 +221,9 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
             <a
-              href="#" // TODO: replace with actual resume URL
+              href="https://drive.google.com/file/d/1YFxAtTqqV_A6DbV3FfjQkkV_sxXMNu70/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-[#C3E41D] text-black px-8 py-3 font-semibold hover:bg-[#d4f542] transition-colors"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -280,7 +283,7 @@ export default function Home() {
         </div>
       </section>
       {/* Contact */}
-  <section id="contact" className="py-24 px-6 bg-background text-foreground">
+  <section id="contact" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">Let's Connect</h2>
           <p className="text-neutral-400 text-lg max-w-2xl mx-auto">

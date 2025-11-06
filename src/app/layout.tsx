@@ -37,7 +37,8 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
       </head>
       <body className="min-h-screen antialiased bg-background text-foreground">
-        <div className="pointer-events-none fixed inset-0 z-20 mix-blend-screen opacity-70">
+        {/* Place Hyperspeed behind page content so translucent panels can reveal it */}
+        <div className="pointer-events-none fixed inset-0 z-0 opacity-70">
           <Hyperspeed />
         </div>
         <div className="relative z-10">
