@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 // @ts-ignore - allow importing global CSS as a side-effect; Next.js handles global CSS at runtime
 import "./globals.css";
-import Hyperspeed from "@/components/ui/hyperspeed";
+import FloatingLines from "@/components/ui/FloatingLines";
 
 export const metadata: Metadata = {
   title: "Lakshya Agarwal | Developer • Researcher • Self-Hoster",
@@ -16,19 +16,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark">
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(() => { try {
-              const stored = localStorage.getItem('theme');
-              const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-              const light = stored ? stored === 'light' : prefersLight;
-              document.documentElement.classList.toggle('light', light);
-              document.documentElement.classList.toggle('dark', !light);
-            } catch(e) {} })();`,
-          }}
-        />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Antic&display=swap"
@@ -37,9 +26,17 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
       </head>
       <body className="min-h-screen antialiased bg-background text-foreground">
-        {/* Place Hyperspeed behind page content so translucent panels can reveal it */}
+        {/* Place FloatingLines behind page content so translucent panels can reveal it */}
         <div className="pointer-events-none fixed inset-0 z-0 opacity-70">
-          <Hyperspeed />
+          <FloatingLines 
+            enabledWaves={["top", "middle", "bottom"]}
+            lineCount={5}
+            lineDistance={5}
+            bendRadius={5}
+            bendStrength={-0.5}
+            interactive={true}
+            parallax={true}
+          />
         </div>
         <div className="relative z-10">
           {children}

@@ -7,26 +7,27 @@ export default function Home() {
       <PortfolioHero />
 
       {/* About */}
-      <section id="about" className="py-24 px-6 bg-transparent text-foreground">
+      <section id="about" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
         <div className="max-w-5xl mx-auto">
           <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/10 dark:bg-black/60 backdrop-blur-sm supports-[backdrop-filter]:backdrop-blur-md p-8 md:p-10 space-y-8">
             <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white">About Me</h2>
             <div className="space-y-6">
             <p className="text-neutral-700 dark:text-neutral-300 text-lg leading-relaxed">
-              I'm a student at <strong className="text-black dark:text-white font-semibold">JK Lakshmipat University</strong> exploring the human side of artificial intelligence. 
-              My current research focuses on <strong className="text-black dark:text-white font-semibold">AI ethics, emotional intelligence, and human–AI interaction</strong>—understanding 
-              how AI systems can be designed to serve humanity with empathy and responsibility.
+              I'm a student at <strong className="text-black dark:text-white font-semibold">JK Lakshmipat University</strong> with a strong focus on 
+              applied artificial intelligence, systems engineering, and modern software infrastructure. My work centers on designing and building 
+              reliable, efficient AI-powered systems for real-world use cases.
             </p>
             <p className="text-neutral-700 dark:text-neutral-300 text-lg leading-relaxed">
-              Beyond research, I'm a builder. I develop full-stack projects from the ground up: 
-              <strong className="text-black dark:text-white font-semibold"> React frontends</strong>, <strong className="text-black dark:text-white font-semibold">Python backends</strong>, and 
-              <strong className="text-black dark:text-white font-semibold"> Docker-based deployments</strong>. I'm passionate about self-hosting—running my own infrastructure 
-              gives me control, privacy, and deep insight into how systems work at every layer.
+              I am a hands-on builder who works across the full stack—developing 
+              <strong className="text-black dark:text-white font-semibold"> React and Next.js frontends</strong>, 
+              <strong className="text-black dark:text-white font-semibold"> Python-based backends</strong>, and 
+              <strong className="text-black dark:text-white font-semibold"> containerized deployments using Docker</strong>. 
+              I emphasize clean architecture, performance, and long-term maintainability.
             </p>
             <p className="text-neutral-700 dark:text-neutral-300 text-lg leading-relaxed">
-              I believe the future of technology lies in <strong className="text-black dark:text-white font-semibold">thoughtful engineering</strong>—systems that are both 
-              technically sophisticated and genuinely useful. Whether it's voice-controlled AI assistants, secure home servers, 
-              or media platforms, I build to learn, and I learn to build better.
+              I am particularly interested in self-hosted and privacy-preserving systems. Managing my own servers has given me 
+              practical experience with Linux, networking, container orchestration, and secure remote access. 
+              I enjoy working close to the system layer to understand how software behaves end to end.
             </p>
             </div>
 
@@ -34,18 +35,18 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-6 mt-10">
               <div className="p-6 rounded-lg bg-white/30 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-[#C3E41D]/50 transition-colors">
                 <div className="text-2xl mb-3">🧠</div>
-                <h3 className="font-semibold text-lg mb-2 text-foreground">AI Research</h3>
-                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Exploring emotional AI, ethics, and human-centered design in machine learning systems.</p>
+                <h3 className="font-semibold text-lg mb-2 text-foreground">AI Systems</h3>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Designing and implementing practical AI systems using LLMs, NLP pipelines, and local inference workflows.</p>
               </div>
               <div className="p-6 rounded-lg bg-white/30 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-[#C3E41D]/50 transition-colors">
                 <div className="text-2xl mb-3">⚙️</div>
-                <h3 className="font-semibold text-lg mb-2 text-foreground">Full-Stack Development</h3>
-                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Building production-ready applications with modern web frameworks and cloud-native tools.</p>
+                <h3 className="font-semibold text-lg mb-2 text-foreground">Full-Stack Engineering</h3>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Building scalable, production-ready applications with modern frontend frameworks and backend architectures.</p>
               </div>
               <div className="p-6 rounded-lg bg-white/30 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:border-[#C3E41D]/50 transition-colors">
                 <div className="text-2xl mb-3">🖥️</div>
                 <h3 className="font-semibold text-lg mb-2 text-foreground">Self-Hosted Infrastructure</h3>
-                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Managing home servers, VPNs, media platforms, and secure remote access solutions.</p>
+                <p className="text-neutral-600 dark:text-neutral-400 text-sm">Deploying and managing private servers, secure tunnels, containers, and monitoring systems.</p>
               </div>
             </div>
           </div>
@@ -57,14 +58,15 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-neutral-400 text-lg mb-10 max-w-3xl">
-            Real-world systems I've built to explore AI, automation, and self-hosted infrastructure. Each project taught me something new about engineering at scale.
+            Practical systems I've built across AI, automation, and self-hosted infrastructure. 
+            Each project reflects hands-on experience with real deployment, performance trade-offs, and system design decisions.
           </p>
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
                 title: "Voice-Controlled AI Assistant",
                 desc:
-                  "A conversational AI system built with Python, Ollama API, and real-time speech processing. Features natural language understanding, voice command execution, and text-to-speech responses—bringing AI interaction closer to human conversation.",
+                  "A local-first conversational AI assistant built with Python and the Ollama API. Implements low-latency, real-time speech recognition, NLP-based intent handling, and voice-driven command execution for interacting with system-level tasks.",
                 stack: ["Python", "Ollama API", "SpeechRecognition", "pyttsx3", "NLP"],
                 github: "https://github.com/Lakshya9461",
                 impact: "Real-time voice interaction",
@@ -138,7 +140,7 @@ export default function Home() {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
             <p className="text-neutral-400 text-lg max-w-3xl">
-              A blend of AI/ML expertise, systems programming, and infrastructure engineering—tools I use to build intelligent, scalable systems.
+              A focused skill set spanning AI systems, backend engineering, and infrastructure—used to build scalable, reliable, and locally deployed software systems.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -147,10 +149,10 @@ export default function Home() {
                 <span className="text-[#C3E41D]">▸</span> AI & Machine Learning
               </h3>
               <ul className="text-neutral-400 space-y-2 pl-6">
-                <li>• Ollama API, LLMs, NLP frameworks</li>
-                <li>• SpeechRecognition, pyttsx3 (voice AI)</li>
-                <li>• AI ethics & emotional intelligence research</li>
-                <li>• Model fine-tuning and inference optimization</li>
+                <li>• Ollama API, LLMs, local inference workflows</li>
+                <li>• NLP pipelines and prompt engineering</li>
+                <li>• Speech recognition and text-to-speech systems</li>
+                <li>• Model deployment and performance optimization</li>
               </ul>
             </div>
             <div className="space-y-4">
@@ -201,9 +203,9 @@ export default function Home() {
                 <span className="text-[#C3E41D]">▸</span> Currently Exploring
               </h3>
               <ul className="text-neutral-400 space-y-2 pl-6">
-                <li>• Emotional AI and human-centered design</li>
+                <li>• Agentic AI systems and local-first tooling</li>
                 <li>• Distributed systems and microservices</li>
-                <li>• Advanced data structures (graphs, trees)</li>
+                <li>• Advanced data structures and algorithms</li>
                 <li>• Quantum computing fundamentals</li>
               </ul>
             </div>
@@ -216,8 +218,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">Resume & Background</h2>
           <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
-            A comprehensive overview of my academic journey, technical projects, research interests, and hands-on experience 
-            building AI systems and infrastructure.
+            An overview of my academic background, technical projects, and hands-on experience in building AI-driven systems and managing production-grade infrastructure.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
             <a
@@ -250,32 +251,31 @@ export default function Home() {
             <div className="flex items-start gap-4 mb-6">
               <div className="text-3xl">🔬</div>
               <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-3">Currently Creating</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-3">Currently Building</h2>
                 <p className="text-[#C3E41D] font-semibold text-sm uppercase tracking-wider mb-4">Local Agentic AI Browser</p>
               </div>
             </div>
-            <p className="text-neutral-300 text-lg leading-relaxed mb-6">
-              I'm exploring <strong className="text-foreground">how AI systems can understand and respond to human emotions</strong> in ethical, 
-              meaningful ways. This work sits at the intersection of machine learning, psychology, and HCI—asking:
-              Can AI be empathetic? How do we design systems that respect emotional context? What does responsible AI look like in practice?
+            <p className="text-neutral-600 dark:text-neutral-300 text-lg leading-relaxed mb-6">
+              I am building a local-first, agent-based AI browser focused on automating complex workflows while keeping computation and data on the user's machine. 
+              The project emphasizes agent planning, tool orchestration, and tight system integration using locally hosted LLMs.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-3">
-                <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider">Key Questions</h3>
-                <ul className="text-neutral-400 space-y-2 text-sm">
-                  <li>• Recognizing and modeling emotional states</li>
-                  <li>• Ethical frameworks for emotional AI deployment</li>
-                  <li>• Impact of AI on trust and human relationships</li>
-                  <li>• Bias detection and mitigation in affective models</li>
+                <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider">Key Areas</h3>
+                <ul className="text-neutral-500 dark:text-neutral-400 space-y-2 text-sm">
+                  <li>• Agent planning and task decomposition</li>
+                  <li>• Tool-calling and system automation</li>
+                  <li>• Local inference and privacy-first design</li>
+                  <li>• Performance and reliability considerations</li>
                 </ul>
               </div>
               <div className="space-y-3">
                 <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider">Approach</h3>
-                <ul className="text-neutral-400 space-y-2 text-sm">
-                  <li>• Literature review across affective computing</li>
-                  <li>• Prototyping with NLP and voice AI toolchains</li>
-                  <li>• Case studies of real-world applications</li>
-                  <li>• Interdisciplinary lens (tech + ethics + psychology)</li>
+                <ul className="text-neutral-500 dark:text-neutral-400 space-y-2 text-sm">
+                  <li>• Modular agent architecture design</li>
+                  <li>• Prototyping with local LLM toolchains</li>
+                  <li>• Iterative testing and optimization</li>
+                  <li>• Focus on user privacy and data control</li>
                 </ul>
               </div>
             </div>
@@ -287,7 +287,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold">Let's Connect</h2>
           <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
-            I'm always excited to discuss AI research, collaborate on technical projects, or chat about self-hosting and infrastructure. 
+            I'm open to discussing internships, research opportunities, and technical collaborations in AI systems and infrastructure. 
             Whether you're working on something interesting or just want to connect—reach out!
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6 mt-8">

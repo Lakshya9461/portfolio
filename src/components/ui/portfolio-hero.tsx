@@ -3,17 +3,9 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 export function PortfolioHero() {
-  const [isDark, setIsDark] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    // initialize from current html classes set by layout script
-    const html = document.documentElement;
-    const dark = html.classList.contains("dark") || !html.classList.contains("light");
-    setIsDark(dark);
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -31,21 +23,6 @@ export function PortfolioHero() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMenuOpen]);
-
-  const toggleTheme = () => {
-    const nextTheme = !isDark;
-    setIsDark(nextTheme);
-    const html = document.documentElement;
-    if (nextTheme) {
-      html.classList.add("dark");
-      html.classList.remove("light");
-      localStorage.setItem("theme", "dark");
-    } else {
-      html.classList.add("light");
-      html.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  };
 
   const menuItems = [
     { label: "HOME", href: "#home", highlight: true },
@@ -107,19 +84,6 @@ export function PortfolioHero() {
           <div className="text-4xl" style={{ fontFamily: "'Brush Script MT', 'Lucida Handwriting', cursive" }}>
             L
           </div>
-
-          {/* Theme Toggle */}
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="relative w-16 h-8 rounded-full hover:opacity-80 transition-opacity bg-neutral-200 dark:bg-neutral-800"
-            aria-label="Toggle theme"
-          >
-            <div
-              className="absolute top-1 left-1 w-6 h-6 rounded-full transition-transform duration-300 bg-neutral-900 dark:bg-neutral-100"
-              style={{ transform: isDark ? "translateX(2rem)" : "translateX(0)" }}
-            />
-          </button>
         </nav>
       </header>
 
