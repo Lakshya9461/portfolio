@@ -7,9 +7,9 @@ export default function Home() {
       <PortfolioHero />
 
       {/* About */}
-      <section id="about" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
+      <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 bg-black/80 dark:bg-black/80 text-foreground">
         <div className="max-w-5xl mx-auto">
-          <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/10 dark:bg-black/60 backdrop-blur-sm supports-[backdrop-filter]:backdrop-blur-md p-8 md:p-10 space-y-8">
+          <div className="rounded-2xl border border-black/10 dark:border-white/10 bg-white/10 dark:bg-black/60 backdrop-blur-sm supports-[backdrop-filter]:backdrop-blur-md p-5 sm:p-8 md:p-10 space-y-6 sm:space-y-8">
             <h2 className="text-3xl md:text-4xl font-bold text-black dark:text-white">About Me</h2>
             <div className="space-y-6">
             <p className="text-neutral-700 dark:text-neutral-300 text-lg leading-relaxed">
@@ -54,9 +54,9 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-  <section id="projects" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
+  <section id="projects" className="py-16 sm:py-24 px-4 sm:px-6 bg-black/80 dark:bg-black/80 text-foreground">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
           <p className="text-neutral-400 text-lg mb-10 max-w-3xl">
             Practical systems I've built across AI, automation, and self-hosted infrastructure. 
             Each project reflects hands-on experience with real deployment, performance trade-offs, and system design decisions.
@@ -135,10 +135,10 @@ export default function Home() {
       </section>
 
       {/* Skills */}
-  <section id="skills" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
-        <div className="max-w-6xl mx-auto space-y-10">
+  <section id="skills" className="py-16 sm:py-24 px-4 sm:px-6 bg-black/80 dark:bg-black/80 text-foreground">
+        <div className="max-w-6xl mx-auto space-y-8 sm:space-y-10">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
             <p className="text-neutral-400 text-lg max-w-3xl">
               A focused skill set spanning AI systems, backend engineering, and infrastructure—used to build scalable, reliable, and locally deployed software systems.
             </p>
@@ -214,9 +214,9 @@ export default function Home() {
       </section>
 
       {/* Resume */}
-  <section id="resume" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
+  <section id="resume" className="py-16 sm:py-24 px-4 sm:px-6 bg-black/80 dark:bg-black/80 text-foreground">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold">Resume & Background</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Resume & Background</h2>
           <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
             An overview of my academic background, technical projects, and hands-on experience in building AI-driven systems and managing production-grade infrastructure.
           </p>
@@ -245,9 +245,9 @@ export default function Home() {
         </div>
       </section>
       {/* Research Focus */}
-  <section className="py-24 px-6 bg-background text-foreground">
+  <section className="py-16 sm:py-24 px-4 sm:px-6 bg-background text-foreground">
         <div className="max-w-5xl mx-auto">
-          <div className="rounded-2xl border border-[#C3E41D]/20 bg-gradient-to-br from-[#C3E41D]/5 to-transparent p-8 md:p-12">
+          <div className="rounded-2xl border border-[#C3E41D]/20 bg-gradient-to-br from-[#C3E41D]/5 to-transparent p-5 sm:p-8 md:p-12">
             <div className="flex items-start gap-4 mb-6">
               <div className="text-3xl">🔬</div>
               <div>
@@ -283,38 +283,38 @@ export default function Home() {
         </div>
       </section>
       {/* Contact */}
-  <section id="contact" className="py-24 px-6 bg-black/80 dark:bg-black/80 text-foreground">
+  <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 bg-black/80 dark:bg-black/80 text-foreground">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold">Let's Connect</h2>
-          <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">Let's Connect</h2>
+          <p className="text-neutral-400 text-base sm:text-lg max-w-2xl mx-auto">
             I'm open to discussing internships, research opportunities, and technical collaborations in AI systems and infrastructure. 
             Whether you're working on something interesting or just want to connect—reach out!
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
+          <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-6 mt-8">
             <a 
               href="mailto:la9928609007@gmail.com" 
-              className="group inline-flex items-center gap-3 px-6 py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#C3E41D]/50 hover:bg-white/10 transition-all"
+              className="group inline-flex items-center gap-3 px-5 sm:px-6 py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#C3E41D]/50 hover:bg-white/10 active:bg-white/15 transition-all w-full sm:w-auto justify-center"
             >
-              <Mail size={20} className="text-neutral-400 group-hover:text-[#C3E41D] transition-colors" />
-              <span className="font-medium">la9928609007@gmail.com</span>
+              <Mail size={20} className="text-neutral-400 group-hover:text-[#C3E41D] transition-colors flex-shrink-0" />
+              <span className="font-medium text-sm sm:text-base truncate">la9928609007@gmail.com</span>
             </a>
             <a 
               href="https://github.com/Lakshya9461" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 px-6 py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#C3E41D]/50 hover:bg-white/10 transition-all"
+              className="group inline-flex items-center gap-3 px-5 sm:px-6 py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#C3E41D]/50 hover:bg-white/10 active:bg-white/15 transition-all w-full sm:w-auto justify-center"
             >
-              <Github size={20} className="text-neutral-400 group-hover:text-[#C3E41D] transition-colors" />
-              <span className="font-medium">Lakshya9461</span>
+              <Github size={20} className="text-neutral-400 group-hover:text-[#C3E41D] transition-colors flex-shrink-0" />
+              <span className="font-medium text-sm sm:text-base">Lakshya9461</span>
             </a>
             <a
               href="https://www.linkedin.com/in/lakshya-agarwal-8b3070313"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 px-6 py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#C3E41D]/50 hover:bg-white/10 transition-all"
+              className="group inline-flex items-center gap-3 px-5 sm:px-6 py-3 rounded-lg bg-white/5 border border-white/10 hover:border-[#C3E41D]/50 hover:bg-white/10 active:bg-white/15 transition-all w-full sm:w-auto justify-center"
             >
-              <Linkedin size={20} className="text-neutral-400 group-hover:text-[#C3E41D] transition-colors" />
-              <span className="font-medium">Lakshya Agarwal</span>
+              <Linkedin size={20} className="text-neutral-400 group-hover:text-[#C3E41D] transition-colors flex-shrink-0" />
+              <span className="font-medium text-sm sm:text-base">Lakshya Agarwal</span>
             </a>
           </div>
         </div>

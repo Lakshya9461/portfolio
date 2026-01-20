@@ -36,14 +36,14 @@ export function PortfolioHero() {
   return (
     <div className="min-h-screen bg-transparent text-foreground transition-colors" id="home">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 px-6 py-6">
+      <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-4 sm:py-6">
         <nav className="flex items-center justify-between max-w-screen-2xl mx-auto">
           {/* Menu Button */}
           <div className="relative">
             <button
               ref={buttonRef}
               type="button"
-              className="p-2 transition-colors duration-300 z-50 text-neutral-500 hover:text-black dark:hover:text-white"
+              className="p-3 -m-1 transition-colors duration-300 z-50 text-neutral-500 hover:text-black dark:hover:text-white active:text-[#C3E41D]"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
@@ -98,7 +98,7 @@ export function PortfolioHero() {
                 delay={100}
                 animateBy="letters"
                 direction="top"
-                className="font-bold text-[100px] sm:text-[140px] md:text-[180px] lg:text-[210px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap"
+                className="font-bold text-[48px] xs:text-[70px] sm:text-[100px] md:text-[140px] lg:text-[180px] xl:text-[210px] leading-[0.85] tracking-tighter uppercase justify-center"
                 style={{ color: "#C3E41D", fontFamily: "'Fira Code', monospace" }}
               />
             </div>
@@ -108,14 +108,14 @@ export function PortfolioHero() {
                 delay={100}
                 animateBy="letters"
                 direction="top"
-                className="font-bold text-[100px] sm:text-[140px] md:text-[180px] lg:text-[210px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap"
+                className="font-bold text-[48px] xs:text-[70px] sm:text-[100px] md:text-[140px] lg:text-[180px] xl:text-[210px] leading-[0.85] tracking-tighter uppercase justify-center"
                 style={{ color: "#C3E41D", fontFamily: "'Fira Code', monospace" }}
               />
             </div>
 
             {/* Profile Picture */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-              <div className="w-[65px] h-[110px] sm:w-[90px] sm:h-[152px] md:w-[110px] md:h-[185px] lg:w-[129px] lg:h-[218px] rounded-full overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-110 cursor-pointer">
+              <div className="w-[50px] h-[84px] xs:w-[60px] xs:h-[100px] sm:w-[80px] sm:h-[135px] md:w-[100px] md:h-[168px] lg:w-[120px] lg:h-[202px] xl:w-[129px] xl:h-[218px] rounded-full overflow-hidden shadow-2xl transition-transform duration-300 hover:scale-110 active:scale-105 cursor-pointer">
                 <img
                   src="/ghibli.jpg"
                   alt="Lakshya Agarwal"
