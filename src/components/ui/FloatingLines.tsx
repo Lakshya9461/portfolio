@@ -231,7 +231,7 @@ interface FloatingLinesProps {
   mixBlendMode?: React.CSSProperties['mixBlendMode'];
 }
 
-function hexToVec3(hex: string): Vector3 {
+function hexToVec3(hex: string) {
   let value = hex.trim();
 
   if (value.startsWith('#')) {
