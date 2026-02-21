@@ -233,7 +233,7 @@ export default function Home() {
               Download Resume
             </a>
             <a
-              href="https://www.linkedin.com/in/lakshya-agarwal-8b3070313"
+              href="https://www.linkedin.com/in/lakshya70"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg border-2 border-white/20 text-foreground px-8 py-3 font-semibold hover:border-white/40 hover:bg-white/5 transition-colors"
