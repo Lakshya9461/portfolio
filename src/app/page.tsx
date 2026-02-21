@@ -68,7 +68,7 @@ export default function Home() {
                 desc:
                   "A local-first conversational AI assistant built with Python and the Ollama API. Implements low-latency, real-time speech recognition, NLP-based intent handling, and voice-driven command execution for interacting with system-level tasks.",
                 stack: ["Python", "Ollama API", "SpeechRecognition", "pyttsx3", "NLP"],
-                github: "https://github.com/Lakshya9461",
+                github: "https://github.com/Lakshya9461/Voice-Ollama-Assistant",
                 impact: "Real-time voice interaction",
               },
               {
