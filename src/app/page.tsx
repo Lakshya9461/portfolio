@@ -240,7 +240,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
             <a
-              href=""
+              href="https://drive.google.com/file/d/16WxnEq2SQqTzj_YINYT1UNCKUD9LIC_W/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg bg-[#C3E41D] text-black px-8 py-3 font-semibold hover:bg-[#d4f542] transition-colors"
