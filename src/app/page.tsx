@@ -2,6 +2,55 @@ import PortfolioHero from "@/components/ui/portfolio-hero";
 import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Home() {
+  const MAINTENANCE_MODE = true;
+
+  if (MAINTENANCE_MODE) {
+    return (
+      <main className="min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] text-foreground p-4">
+        <div className="absolute inset-0 bg-black/60 pointer-events-none" />
+        <div className="relative z-10 max-w-2xl mx-auto text-center space-y-8 p-8 sm:p-12 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl">
+          <div className="space-y-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-4">
+              <svg className="w-8 h-8 text-[#C3E41D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white">Under Maintenance</h1>
+            <p className="text-neutral-400 text-lg leading-relaxed">
+              I'm currently updating my portfolio with some new projects and content. 
+              Please check back soon!
+            </p>
+          </div>
+          
+          <div className="pt-8 border-t border-white/10">
+            <p className="text-neutral-300 mb-6 font-medium">In the meantime, you can view my resume or get in touch.</p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://drive.google.com/file/d/16WxnEq2SQqTzj_YINYT1UNCKUD9LIC_W/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-lg bg-[#C3E41D] text-black px-8 py-3 font-semibold hover:bg-[#d4f542] transition-colors w-full sm:w-auto justify-center shadow-[0_0_20px_rgba(195,228,29,0.3)]"
+              >
+                <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                View Resume
+              </a>
+              <a
+                href="mailto:la9928609007@gmail.com"
+                className="inline-flex items-center gap-2 rounded-lg bg-white/5 border border-white/10 text-white px-8 py-3 font-semibold hover:bg-white/10 transition-colors w-full sm:w-auto justify-center"
+              >
+                <Mail size={20} className="flex-shrink-0" />
+                Contact Me
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen">
       <PortfolioHero />
