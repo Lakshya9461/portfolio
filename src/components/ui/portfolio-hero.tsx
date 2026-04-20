@@ -49,7 +49,7 @@ export default function PortfolioHero() {
       <div className="absolute inset-0 z-0 bg-[size:4rem_4rem] pointer-events-none" style={{ backgroundImage: isDarkMode ? 'linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)' : 'linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)', maskImage: 'radial-gradient(ellipse_60%_50%_at_50%_50%,#000_10%,transparent_100%)' }} />
 
       {/* 4. Foreground Edge Mask to push hero forward dynamically */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t z-10 pointer-events-none" style={{ from: isDarkMode ? 'black' : '#f5f5f5', to: 'transparent' }} />
+      <div className="absolute inset-x-0 bottom-0 h-40 z-10 pointer-events-none" style={{ backgroundImage: isDarkMode ? 'linear-gradient(to top, black, transparent)' : 'linear-gradient(to top, #f5f5f5, transparent)' }} />
 
       {/* Content */}
       <div className={`relative z-20 flex flex-col items-center text-center max-w-5xl px-4 transition-all duration-1000 transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
