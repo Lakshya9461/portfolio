@@ -53,5 +53,14 @@ Create a modern, premium developer portfolio website with a clean, minimal aesth
   - [x] Transformed Hero into a Manga Cover / Opening Splash Page with volume indicators and Japanese Inkan / Hanko red seal (`極`).
   - [x] Refashioned all sections into distinct episodic manga panels (Character Sheet, Arsenal Roster, Chronicles Timeline, Masterwork Covers, Field Dispatches, and Transmission).
 
+- [x] **Self-Hosted Fonts & FOUC Fix**:
+  - [x] Self-hosted `Dela Gothic One` + `Space Grotesk` via `@fontsource`.
+  - [x] Removed Google Fonts `<link>` (eliminated "Layout was forced" FOUC; build is network-free).
+- [x] **Deploy Access Fix**:
+  - [x] Stale bot branches (`vercel/react-server-components-cve-vu-mei3hl`, `cloudflare/workers-autoconfig`) deleted from origin; `main` is the only branch.
+  - [x] Global git author switched to owner account (`Lakshya9461` noreply) so Vercel on the Hobby plan accepts deployments.
+- [x] **Repo Docs**:
+  - [x] Added `AGENTS.md` with commands, design rules, and identity/content constraints.
+
 ---
 *Last updated: Redesigned full portfolio theme into an authentic Inked Manga Panel aesthetic with custom screentones, Dela Gothic typography, and comic gutter layouts.*
