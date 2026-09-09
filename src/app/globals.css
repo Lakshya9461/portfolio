@@ -1,56 +1,215 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #0a0a0a; /* default dark */
-  --foreground: #ededed;
-  --card-bg: rgba(255, 255, 255, 0.02);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --card-hover-bg: rgba(255, 255, 255, 0.04);
-  --nav-bg: rgba(0, 0, 0, 0.3);
-  --nav-border: rgba(255, 255, 255, 0.06);
-  --section-bg: rgba(255, 255, 255, 0.01);
-  --section-border: rgba(255, 255, 255, 0.04);
-  --input-bg: rgba(0, 0, 0, 0.5);
-  --input-border: rgba(255, 255, 255, 0.1);
-  --input-hover-border: rgba(255, 255, 255, 0.2);
-  --muted-text: #a3a3a3;
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --panel-bg: #111114;
+  --panel-border: #ffffff;
+  --panel-shadow: #ffffff;
+  --screentone-dot: rgba(255, 255, 255, 0.14);
+  --screentone-dot-subtle: rgba(255, 255, 255, 0.06);
+  --accent-red: #ff2a5f;
+  --accent-red-hover: #e02454;
+  --card-bg: #111114;
+  --card-border: #ffffff;
+  --card-hover-bg: #18181c;
+  --nav-bg: rgba(9, 9, 11, 0.85);
+  --nav-border: #ffffff;
+  --section-bg: #09090b;
+  --section-border: #27272a;
+  --input-bg: #16161a;
+  --input-border: #ffffff;
+  --input-hover-border: #ff2a5f;
+  --muted-text: #a1a1aa;
+  --chapter-bg: #09090b;
+  --chapter-fg: #f4f4f5;
 }
 
 :root.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --card-bg: rgba(255, 255, 255, 0.02);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --card-hover-bg: rgba(255, 255, 255, 0.04);
-  --nav-bg: rgba(0, 0, 0, 0.3);
-  --nav-border: rgba(255, 255, 255, 0.06);
-  --section-bg: rgba(255, 255, 255, 0.01);
-  --section-border: rgba(255, 255, 255, 0.04);
-  --input-bg: rgba(0, 0, 0, 0.5);
-  --input-border: rgba(255, 255, 255, 0.1);
-  --input-hover-border: rgba(255, 255, 255, 0.2);
-  --muted-text: #a3a3a3;
+  --background: #09090b;
+  --foreground: #f4f4f5;
+  --panel-bg: #111114;
+  --panel-border: #ffffff;
+  --panel-shadow: #ffffff;
+  --screentone-dot: rgba(255, 255, 255, 0.14);
+  --screentone-dot-subtle: rgba(255, 255, 255, 0.06);
+  --accent-red: #ff2a5f;
+  --accent-red-hover: #e02454;
+  --card-bg: #111114;
+  --card-border: #ffffff;
+  --card-hover-bg: #18181c;
+  --nav-bg: rgba(9, 9, 11, 0.85);
+  --nav-border: #ffffff;
+  --section-bg: #09090b;
+  --section-border: #27272a;
+  --input-bg: #16161a;
+  --input-border: #ffffff;
+  --input-hover-border: #ff2a5f;
+  --muted-text: #a1a1aa;
+  --chapter-bg: #09090b;
+  --chapter-fg: #f4f4f5;
 }
 
 :root.light {
-  --background: #fafafa;
-  --foreground: #171717;
-  --card-bg: rgba(0, 0, 0, 0.02);
-  --card-border: rgba(0, 0, 0, 0.08);
-  --card-hover-bg: rgba(0, 0, 0, 0.04);
-  --nav-bg: rgba(255, 255, 255, 0.7);
-  --nav-border: rgba(0, 0, 0, 0.06);
-  --section-bg: rgba(0, 0, 0, 0.01);
-  --section-border: rgba(0, 0, 0, 0.04);
-  --input-bg: rgba(255, 255, 255, 0.8);
-  --input-border: rgba(0, 0, 0, 0.1);
-  --input-hover-border: rgba(0, 0, 0, 0.2);
-  --muted-text: #525252;
+  --background: #fbf9f4; /* Authentic Manga Tankobon Paper */
+  --foreground: #09090b;
+  --panel-bg: #ffffff;
+  --panel-border: #000000;
+  --panel-shadow: #000000;
+  --screentone-dot: rgba(0, 0, 0, 0.14);
+  --screentone-dot-subtle: rgba(0, 0, 0, 0.05);
+  --accent-red: #e63946;
+  --accent-red-hover: #c92a37;
+  --card-bg: #ffffff;
+  --card-border: #000000;
+  --card-hover-bg: #f5f2e9;
+  --nav-bg: rgba(251, 249, 244, 0.88);
+  --nav-border: #000000;
+  --section-bg: #f5f2e9;
+  --section-border: #000000;
+  --input-bg: #ffffff;
+  --input-border: #000000;
+  --input-hover-border: #e63946;
+  --muted-text: #52525b;
+  --chapter-bg: #ffffff;
+  --chapter-fg: #09090b;
+}
+
+/* Authentic Manga Screentone Patterns */
+.manga-halftone {
+  background-image: radial-gradient(circle, var(--screentone-dot) 1.5px, transparent 1.5px);
+  background-size: 10px 10px;
+}
+
+.manga-halftone-dense {
+  background-image: radial-gradient(circle, var(--screentone-dot) 1.2px, transparent 1.2px);
+  background-size: 6px 6px;
+}
+
+.manga-halftone-subtle {
+  background-image: radial-gradient(circle, var(--screentone-dot-subtle) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+/* Manga Speed Lines (Shuchusen) */
+.manga-speed-hatch {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    var(--screentone-dot-subtle) 6px,
+    var(--screentone-dot-subtle) 7px
+  );
+}
+
+/* Inked Manga Panel Borders & Hard Shadows */
+.manga-box {
+  border: 2.5px solid var(--panel-border);
+  box-shadow: 4px 4px 0px 0px var(--panel-shadow);
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.manga-box:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px var(--panel-shadow), 0 0 28px color-mix(in srgb, var(--accent-red) 22%, transparent);
+}
+
+.manga-box-red {
+  border: 2.5px solid var(--accent-red);
+  box-shadow: 4px 4px 0px 0px var(--accent-red);
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.15s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.manga-box-red:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px 0px var(--accent-red), 0 0 28px color-mix(in srgb, var(--accent-red) 30%, transparent);
+}
+
+/* Traditional Red Inkan / Hanko Seal Stamp */
+.manga-hanko {
+  border: 2px solid var(--accent-red);
+  color: var(--accent-red);
+  font-family: var(--font-display);
+  box-shadow: inset 0 0 0 1px var(--accent-red);
+  transform: rotate(-3deg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.05em;
+}
+
+/* Print-slab label: small caps callouts in the single workhorse family */
+.tankobon-label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Manga chapter-opening band (book furniture, not an eyebrow) */
+.manga-chapter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  border-top: 3px solid var(--panel-border);
+  border-bottom: 3px solid var(--panel-border);
+  background: var(--chapter-bg);
+  color: var(--chapter-fg);
+  padding: 0.625rem 1.25rem;
+  overflow: hidden;
+}
+.manga-chapter-mark { color: var(--accent-red); font-size: 0.7rem; }
+.manga-chapter-label {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+.manga-chapter-title {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.manga-chapter-meta {
+  margin-left: auto;
+  font-weight: 700;
+  font-size: 0.64rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  white-space: nowrap;
+}
+
+/* Visible keyboard focus */
+:focus-visible {
+  outline: 3px solid var(--accent-red);
+  outline-offset: 3px;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-sans: 'Space Grotesk', 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Dela Gothic One', 'Noto Sans JP', sans-serif;
   /* Custom breakpoint for extra small screens */
   --breakpoint-xs: 480px;
 }
@@ -69,6 +228,7 @@ html, body, #__next {
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans);
   /* Prevent horizontal scroll on mobile */
   overflow-x: hidden;
   /* Smooth scrolling */

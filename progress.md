@@ -35,5 +35,23 @@ Create a modern, premium developer portfolio website with a clean, minimal aesth
   - [x] Ensured readable fonts and contrast in both modes.
   - [x] Persisted theme preference in localStorage.
 
+- [x] **Tech Stack & Section Refinement**:
+  - [x] Removed System Terminal section and unused terminal component.
+  - [x] Removed Flutter and Electron from the Tech Stack showcase.
+- [x] **CV / Resume Sync**:
+  - [x] Integrated updated background, research experience (Early Sepsis-3 Prediction on MIMIC-IV supervised by Dr. Amit Sinhal).
+  - [x] Added Local LLM & AI Agent Infrastructure (RTX 4070, Ollama, Nginx, Hermes Agent) and Self-Hosted Homelab projects.
+  - [x] Refreshed Tech Stack with PyTorch, Nginx, PostgreSQL/SQL alongside core tools.
+  - [x] Added CV download/view buttons in Navbar, Hero, and Footer linking to `Lakshya_Agarwal_CV.pdf`.
+  - [x] Updated location (Jaipur, India), email (`la9928609007@gmail.com`), and personal domain (`lakshya9461.in`).
+
+- [x] **Inked Manga Panel Redesign**:
+  - [x] Designed custom comic/manga palette (Deep Pitch Ink `#09090b` dark mode & Authentic Tankōbon newsprint paper `#fbf9f4` light mode).
+  - [x] Implemented authentic screentone halftone dots (`manga-halftone`) and speed-line hatching (`manga-speed-hatch`).
+  - [x] Added crisp comic panel borders with hard offset box-shadows (`manga-box`, `manga-box-red`) and active stamping physics.
+  - [x] Integrated manga typography: `Dela Gothic One`, `Space Grotesk`, `Noto Sans JP`, with chapter titles (`CHAPTER 01 // 能力値`, `CHAPTER 02 // 装備`, etc.).
+  - [x] Transformed Hero into a Manga Cover / Opening Splash Page with volume indicators and Japanese Inkan / Hanko red seal (`極`).
+  - [x] Refashioned all sections into distinct episodic manga panels (Character Sheet, Arsenal Roster, Chronicles Timeline, Masterwork Covers, Field Dispatches, and Transmission).
+
 ---
-*Last updated: Added light mode theme toggle with full color scheme support and improved readability across all sections.*
+*Last updated: Redesigned full portfolio theme into an authentic Inked Manga Panel aesthetic with custom screentones, Dela Gothic typography, and comic gutter layouts.*
