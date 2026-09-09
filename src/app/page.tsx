@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import PortfolioHero from "@/components/ui/portfolio-hero";
+import { PageRibbon } from "@/components/ui/page-ribbon";
 import { 
   SiPython, 
   SiPytorch, 
@@ -89,6 +90,23 @@ export default function Home() {
 
   const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
+  // Page-turn slideshow: mark the page nearest the viewport as "in view"
+  // so it un-shifts from the gutter (translateX -> 0). Pure DOM class
+  // toggling — no state, stays compiler-safe.
+  useEffect(() => {
+    const pages = document.querySelectorAll<HTMLElement>("[data-page]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) =>
+          entry.target.classList.toggle("in-view", entry.isIntersecting)
+        );
+      },
+      { rootMargin: "0px 0px -30% 0px", threshold: 0 }
+    );
+    pages.forEach((page) => observer.observe(page));
+    return () => observer.disconnect();
+  }, []);
+
   const techArsenal = [
     { node: <SiPython size={44} className="text-[#ff2a5f]" />, title: "Python", slot: "01", tag: "AI/CORE" },
     { node: <SiPytorch size={44} className="text-[#ff2a5f]" />, title: "PyTorch", slot: "02", tag: "TENSORS" },
@@ -112,6 +130,9 @@ export default function Home() {
     >
       {/* Background Halftone Screentone Grid */}
       <div className="fixed inset-0 z-0 pointer-events-none manga-halftone-subtle opacity-60" />
+
+      {/* Manga Reader Page Ribbon */}
+      <PageRibbon />
 
       <div className="relative z-10">
         
@@ -207,7 +228,7 @@ export default function Home() {
         </header>
 
         {/* Hero Section (Manga Cover Splash Page) */}
-        <section className="relative min-h-screen flex flex-col justify-center pt-20">
+        <section data-page="cover" className="manga-page in-view relative min-h-screen flex flex-col justify-center pt-20">
           <PortfolioHero />
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce pointer-events-none">
             <a 
@@ -232,7 +253,7 @@ export default function Home() {
         <div className="h-px w-full bg-[#ff2a5f] opacity-30" />
 
         {/* About Section: Character Sheet & Core Stats */}
-        <section id="about" className="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto space-y-16 relative z-10">
+        <section id="about" data-page="profile" className="manga-page py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto space-y-16 relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Left Narrative Panel */}
@@ -347,7 +368,7 @@ export default function Home() {
         <div className="h-px w-full bg-[#ff2a5f] opacity-30" />
 
         {/* Tech Arsenal Section */}
-        <section id="tech" className="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto space-y-16 relative z-10">
+        <section id="tech" data-page="arsenal" className="manga-page py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto space-y-16 relative z-10">
           <RevealSection className="max-w-3xl space-y-5">
             <h2 
               className="font-display text-4xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase"
@@ -399,7 +420,7 @@ export default function Home() {
         <div className="h-px w-full bg-[#ff2a5f] opacity-30" />
 
         {/* Experience & Timeline Section */}
-        <section id="experience" className="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+        <section id="experience" data-page="chronicle" className="manga-page py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
             
             {/* Left Header Panel */}
@@ -505,7 +526,7 @@ export default function Home() {
         <div className="h-px w-full bg-[#ff2a5f] opacity-30" />
 
         {/* Projects Showcase (Manga Volume Covers) */}
-        <section id="projects" className="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto space-y-16 relative z-10">
+        <section id="projects" data-page="works" className="manga-page py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto space-y-16 relative z-10">
           <RevealSection className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-4">
               <h2 
@@ -671,7 +692,7 @@ export default function Home() {
         <div className="h-px w-full bg-[#ff2a5f] opacity-30" />
 
         {/* Writing Section */}
-        <section id="blog" className="py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto space-y-16 relative z-10">
+        <section id="blog" data-page="scrolls" className="manga-page py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto space-y-16 relative z-10">
           <RevealSection className="max-w-2xl space-y-5">
             <h2 
               className="font-display text-4xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase"
@@ -747,7 +768,7 @@ export default function Home() {
         <div className="h-px w-full bg-[#ff2a5f] opacity-30" />
 
         {/* Contact Section (Manga Transmission Panel) */}
-        <section id="contact" className="py-24 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto text-center space-y-12 relative z-10">
+        <section id="contact" data-page="transmission" className="manga-page py-24 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto text-center space-y-12 relative z-10">
           <RevealSection className="space-y-6">
             <div className="manga-hanko px-3 py-1 text-sm font-black inline-flex">
               通信極秘 // TRANSMIT

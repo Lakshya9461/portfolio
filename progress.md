@@ -61,6 +61,10 @@ Create a modern, premium developer portfolio website with a clean, minimal aesth
   - [x] Global git author switched to owner account (`Lakshya9461` noreply) so Vercel on the Hobby plan accepts deployments.
 - [x] **Repo Docs**:
   - [x] Added `AGENTS.md` with commands, design rules, and identity/content constraints.
+- [x] **Manga Page-Turn Slideshow**:
+  - [x] Full-viewport snap pages (desktop) — each section flips in like a tankoban page (gutter slide + tilt).
+  - [x] Added fixed manga-reader page ribbon (right edge): progress rail, clickable page ticks, `VOL.n` counter.
+  - [x] Disabled slideshow on mobile (normal vertical reading); respects `prefers-reduced-motion`.
 
 ---
 *Last updated: Redesigned full portfolio theme into an authentic Inked Manga Panel aesthetic with custom screentones, Dela Gothic typography, and comic gutter layouts.*
