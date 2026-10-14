@@ -13,25 +13,48 @@ const roles = [
 export default function PortfolioHero() {
   const [mounted, setMounted] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
-  const [fade, setFade] = useState(true);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
-    const checkTheme = () => {
-      const savedTheme = localStorage.getItem('theme');
-      setIsDarkMode(savedTheme ? savedTheme === 'dark' : !window.matchMedia('(prefers-color-scheme: light)').matches);
-    };
-    checkTheme();
+    const savedTheme = localStorage.getItem('theme');
+    setIsDarkMode(savedTheme ? savedTheme === 'dark' : !window.matchMedia('(prefers-color-scheme: light)').matches);
     setMounted(true);
-    const intervalId = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setRoleIndex((i) => (i + 1) % roles.length);
-        setFade(true);
-      }, 400);
-    }, 3600);
-    return () => clearInterval(intervalId);
   }, []);
+
+  useEffect(() => {
+    const currentFullText = roles[roleIndex].en;
+
+    let timer: NodeJS.Timeout;
+
+    if (!isDeleting) {
+      if (displayedText.length < currentFullText.length) {
+        // Typing speed: 65ms per character
+        timer = setTimeout(() => {
+          setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
+        }, 65);
+      } else {
+        // Pause at full word before deleting: 2200ms
+        timer = setTimeout(() => {
+          setIsDeleting(true);
+        }, 2200);
+      }
+    } else {
+      if (displayedText.length > 0) {
+        // Deleting speed: 35ms per character
+        timer = setTimeout(() => {
+          setDisplayedText(currentFullText.slice(0, displayedText.length - 1));
+        }, 35);
+      } else {
+        // Move to next role
+        setIsDeleting(false);
+        setRoleIndex((prev) => (prev + 1) % roles.length);
+      }
+    }
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, roleIndex]);
 
   return (
     <div 
@@ -114,9 +137,10 @@ export default function PortfolioHero() {
                 CLASS :
               </span>
               
-              <div className={`transition-all duration-300 transform ${fade ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} flex flex-col items-center sm:items-end`}>
-                <span className="font-display text-xl sm:text-2xl md:text-3xl tracking-tight text-[#ff2a5f]">
-                  {roles[roleIndex].en}
+              <div className="flex flex-col items-center sm:items-end">
+                <span className="font-display text-xl sm:text-2xl md:text-3xl tracking-tight text-[#ff2a5f] flex items-center">
+                  <span>{displayedText}</span>
+                  <span className="typewriter-cursor" aria-hidden="true" />
                 </span>
                 <span className="tankobon-label opacity-70">
                   「 {roles[roleIndex].jp} 」
