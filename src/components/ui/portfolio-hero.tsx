@@ -143,9 +143,7 @@ export default function PortfolioHero() {
           </a>
           
           <a 
-            href="/Lakshya_Agarwal_CV.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer"
+            href="/api/cv/pdf" 
             className="manga-box w-full sm:w-auto px-8 py-4 bg-white text-black dark:bg-[#111114] dark:text-white flex items-center justify-center gap-2 active:translate-x-1 active:translate-y-1 active:shadow-none"
           >
             <span className="tankobon-label">VIEW DOSSIER (CV)</span>

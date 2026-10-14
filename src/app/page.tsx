@@ -90,6 +90,27 @@ export default function Home() {
 
   const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
+  // Contact form state
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  const handleContact = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error("Server error");
+      setFormStatus("sent");
+      setFormData({ name: "", email: "", message: "" });
+    } catch {
+      setFormStatus("error");
+    }
+  };
+
   // Page-turn slideshow: mark the page nearest the viewport as "in view"
   // so it un-shifts from the gutter (translateX -> 0). Pure DOM class
   // toggling — no state, stays compiler-safe.
@@ -193,9 +214,7 @@ export default function Home() {
             <div className="flex items-center gap-3">
               {/* CV Action Button */}
               <a 
-                href="/Lakshya_Agarwal_CV.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer"
+                href="/api/cv/pdf" 
                 className="hidden sm:inline-flex items-center gap-1.5 manga-box px-3.5 py-1.5 text-xs font-black tracking-wider uppercase bg-white text-black dark:bg-[#111114] dark:text-white"
               >
                 <FileText size={13} />
@@ -273,12 +292,12 @@ export default function Home() {
                     MISSION LOG // 活動理念
                   </div>
                   <p className="font-normal">
-                    I am a Computer Science undergraduate at <strong className="font-black text-[#ff2a5f]">JK Lakshmipat University</strong> focused on clinical machine learning, private LLM agents, and zero-trust self-hosted systems. My work ranges from building hospital ICU deep learning pipelines (MIMIC-IV early sepsis detection) to managing dedicated GPU model servers and privacy-first desktop browsers.
+                    I am a Computer Science undergraduate at <strong className="font-black text-[#ff2a5f]">JK Lakshmipat University</strong> building privacy-first desktop applications, local-first mobile apps, security tooling, and clinical ML pipelines. My work spans Electron browsers with renderer isolation, C++20 DNS security agents, Flutter finance trackers with 159 tests, and MIMIC-IV ICU early-sepsis prediction with XGBoost (AUROC 0.7935).
                   </p>
                 </div>
 
                 <p className="opacity-90">
-                  My engineering philosophy emphasizes clean, leak-free architectures (strict <code className="font-mono text-sm px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-800 font-bold border border-current">GroupKFold</code> patient-level validation), complete data sovereignty through self-hosted homelabs, and solving high-impact problems rigorously without black-box cloud lock-in.
+                  My engineering philosophy: ship tested, offline-capable software that respects user privacy. Languages: Python, JavaScript, C++, Dart, SQL. Certified: <code className="font-mono text-sm px-1.5 py-0.5 bg-neutral-200 dark:bg-neutral-800 font-bold border border-current">CITI Program</code> — Data or Specimens Only Research (Score 97).
                 </p>
               </div>
 
@@ -451,10 +470,10 @@ export default function Home() {
                 {
                   chapter: "LOG 01",
                   role: "Undergraduate Research Intern — Early Sepsis Prediction",
-                  company: "MIMIC-IV | Supervised by Dr. Amit Sinhal",
-                  date: "2026 — PRESENT",
+                  company: "MIMIC-IV | Supervised by Dr. Amit Sinhal, JKLU",
+                  date: "MAY 2026 — AUG 2026",
                   kanji: "敗血症予測研究",
-                  desc: "Constructed an end-to-end clinical machine learning pipeline for 6-hour-horizon Sepsis-3 onset prediction on MIMIC-IV ICU data. Engineered clinical suspicion windowing, patient-level longitudinal feature extraction, and strict GroupKFold cross-validation to eliminate data leakage. Benchmarked Logistic Regression, XGBoost, and an LSTM sequence model (best AUROC 0.779 / AUPRC 0.394). Currently investigating multi-cohort external validation across eICU and AmsterdamUMCdb."
+                  desc: "Built an end-to-end ML pipeline for 6-hour-horizon Sepsis-3 prediction on MIMIC-IV ICU data: suspected-infection identification, patient/admission/ICU preprocessing, and temporal feature engineering. Benchmarked five approaches (XGBoost, Random Forest, LSTM, Logistic Regression, qSOFA) on identical windows with 5-fold GroupKFold splits by patient to prevent leakage. XGBoost led at AUROC 0.7935 / AUPRC 0.0275 at 0.60% window prevalence; applied SHAP for interpretability. External validation on eICU underway."
                 },
                 {
                   chapter: "LOG 02",
@@ -557,48 +576,48 @@ export default function Home() {
                 vol: "VOL. 01",
                 kanji: "敗血症予測",
                 title: "Clinical Early Sepsis Prediction",
-                desc: "An end-to-end ML pipeline for 6-hour-horizon Sepsis-3 onset prediction on MIMIC-IV ICU data. Implemented patient-level GroupKFold splitting and LSTM sequence modeling achieving AUROC 0.779 / AUPRC 0.394.",
-                tags: ["PyTorch", "LSTM", "MIMIC-IV", "Clinical"],
+                desc: "End-to-end ML pipeline for 6-hour-horizon Sepsis-3 prediction on MIMIC-IV ICU data. Benchmarked XGBoost, Random Forest, LSTM, Logistic Regression, and qSOFA with strict 5-fold GroupKFold patient-level splits. XGBoost led at AUROC 0.7935 / AUPRC 0.0275; SHAP used for interpretability.",
+                tags: ["PyTorch", "XGBoost", "MIMIC-IV", "SHAP", "Clinical ML"],
                 github: "https://github.com/Lakshya9461",
                 demo: "https://github.com/Lakshya9461",
                 image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1000&auto=format&fit=crop",
               },
               {
                 vol: "VOL. 02",
-                kanji: "自律知能基盤",
-                title: "Local LLM & AI Agent Infra",
-                desc: "Remote GPU workstation (RTX 4070) model server running Ollama (Qwen, Gemma, DeepSeek) behind an Nginx reverse proxy. Powers local Continue/OpenCode endpoints and isolated WSL2 Hermes Agent profiles.",
-                tags: ["Ollama", "WSL2", "Nginx", "Hermes Agent"],
-                github: "https://github.com/Lakshya9461",
-                demo: "https://github.com/Lakshya9461",
-                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
-              },
-              {
-                vol: "VOL. 03",
-                kanji: "自作電脳要塞",
-                title: "Self-Hosted Homelab Server",
-                desc: "Self-hosted media, file-sharing, and utility stack on Debian Linux. Features automated Docker Compose/Git CI pipelines and zero exposed public ports secured strictly via Cloudflare Tunnels and Tailscale.",
-                tags: ["Debian", "Docker", "Tailscale", "Cloudflare"],
-                github: "https://github.com/Lakshya9461",
-                demo: "https://github.com/Lakshya9461",
-                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop",
-              },
-              {
-                vol: "VOL. 04",
                 kanji: "電脳盾型閲覧器",
                 title: "Aegis Privacy Browser",
-                desc: "Secure desktop browser engineered with Electron context isolation and preload bridges. Packed with a custom 500+ domain ad-blocker, tab suspension, incognito sessions, and anti-fingerprinting.",
+                desc: "Privacy-focused Electron browser with renderer isolation via preload bridge, nodeIntegration disabled across all windows. Features ~1,400 ad-block/anti-fingerprinting filters across 3 aggressiveness levels, download manager, tab suspension, incognito sessions, and a 13-test Node.js built-in suite guarding a false-positive URL corpus.",
                 tags: ["Electron", "Chromium", "JavaScript", "Security"],
                 github: "https://github.com/Lakshya9461/Aegis-Browser",
                 demo: "https://github.com/Lakshya9461/Aegis-Browser",
                 image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop",
               },
               {
+                vol: "VOL. 03",
+                kanji: "番犬DNS",
+                title: "SentinelDNS",
+                desc: "Local-first DNS security agent co-built in C++20. Core handles wire encode/decode, TTL-bound cache, policy matching, UDP listener/resolver, and a telemetry sink. Policy is a reviewed, git-tracked file with no API write path; diagnostics exposed via a read-only NDJSON IPC API.",
+                tags: ["C++20", "Unix Sockets", "NDJSON", "DNS", "Security"],
+                github: "https://github.com/Lakshya9461",
+                demo: "https://github.com/Lakshya9461",
+                image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop",
+              },
+              {
+                vol: "VOL. 04",
+                kanji: "自作電脳要塞",
+                title: "Self-Hosted Homelab Server",
+                desc: "Self-hosted media, file-sharing, and utility stack on Debian Linux. Automated Docker Compose/Git CI pipelines, zero exposed public ports secured strictly via Cloudflare Tunnels and Tailscale zero-trust mesh.",
+                tags: ["Debian", "Docker", "Tailscale", "Cloudflare", "Linux"],
+                github: "https://github.com/Lakshya9461",
+                demo: "https://github.com/Lakshya9461",
+                image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
+              },
+              {
                 vol: "VOL. 05",
                 kanji: "帳簿魔杖",
                 title: "CashWand Finance Tracker",
-                desc: "An offline-first mobile personal finance application featuring local biometric locks, a domain-driven SQLite architecture, and automated Excel financial report generation.",
-                tags: ["Flutter", "Dart", "SQLite", "Local-First"],
+                desc: "Offline-first Flutter finance tracker with SQLite persistence, overall and category budgets with real-time over-budget warnings, and biometric app lock (fingerprint, Face Unlock, PIN). Ships with 159 tests across entities, repositories, and providers, plus a manual UAT plan.",
+                tags: ["Flutter", "Dart", "SQLite", "Biometric", "Local-First"],
                 github: "https://github.com/Lakshya9461/Cashwand",
                 demo: "https://github.com/Lakshya9461/Cashwand",
                 image: "/cashwand.png",
@@ -808,8 +827,18 @@ export default function Home() {
             {/* Inked Comic Form */}
             <form 
               className="max-w-md mx-auto space-y-4 text-left manga-box p-6 sm:p-8 bg-white dark:bg-[#111114] mt-8"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleContact}
             >
+              {formStatus === "sent" && (
+                <div className="manga-box p-3 bg-[#ff2a5f]/10 border-[#ff2a5f] text-[#ff2a5f] font-mono text-xs font-black uppercase tracking-wider text-center">
+                  ✓ TRANSMISSION RECEIVED // メッセージ受信完了
+                </div>
+              )}
+              {formStatus === "error" && (
+                <div className="manga-box p-3 font-mono text-xs font-black uppercase tracking-wider text-center opacity-70">
+                  ✗ TRANSMISSION FAILED — TRY AGAIN
+                </div>
+              )}
               <div className="space-y-1.5">
                 <label htmlFor="name" className="text-xs font-mono font-black uppercase tracking-wider block">
                   NAME // 氏名
@@ -818,6 +847,8 @@ export default function Home() {
                   type="text" 
                   id="name" 
                   placeholder="AGENT NAME" 
+                  value={formData.name}
+                  onChange={(e) => setFormData(d => ({ ...d, name: e.target.value }))}
                   className="w-full border-2 border-black dark:border-white px-4 py-3 bg-neutral-50 dark:bg-neutral-900 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#ff2a5f]" 
                   required 
                 />
@@ -831,6 +862,8 @@ export default function Home() {
                   type="email" 
                   id="email" 
                   placeholder="agent@example.com" 
+                  value={formData.email}
+                  onChange={(e) => setFormData(d => ({ ...d, email: e.target.value }))}
                   className="w-full border-2 border-black dark:border-white px-4 py-3 bg-neutral-50 dark:bg-neutral-900 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#ff2a5f]" 
                   required 
                 />
@@ -844,6 +877,8 @@ export default function Home() {
                   id="message" 
                   rows={4} 
                   placeholder="State project scope, research question, or system requirements..." 
+                  value={formData.message}
+                  onChange={(e) => setFormData(d => ({ ...d, message: e.target.value }))}
                   className="w-full border-2 border-black dark:border-white px-4 py-3 bg-neutral-50 dark:bg-neutral-900 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-[#ff2a5f] resize-none" 
                   required
                 />
@@ -851,9 +886,12 @@ export default function Home() {
 
               <button 
                 type="submit" 
-                className="manga-box-red w-full py-4 bg-[#ff2a5f] text-white active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center justify-center gap-2 mt-4"
+                disabled={formStatus === "sending" || formStatus === "sent"}
+                className="manga-box-red w-full py-4 bg-[#ff2a5f] text-white active:translate-x-1 active:translate-y-1 active:shadow-none flex items-center justify-center gap-2 mt-4 disabled:opacity-60 disabled:cursor-not-allowed disabled:active:translate-x-0 disabled:active:translate-y-0"
               >
-                <span className="tankobon-label">SEND TRANSMISSION // 送信</span>
+                <span className="tankobon-label">
+                  {formStatus === "sending" ? "TRANSMITTING…" : formStatus === "sent" ? "SENT ✓" : "SEND TRANSMISSION // 送信"}
+                </span>
               </button>
             </form>
 
@@ -879,13 +917,18 @@ export default function Home() {
                   <Linkedin size={20} />
                 </a>
                 <a 
-                  href="/Lakshya_Agarwal_CV.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                  href="/api/cv/pdf" 
                   className="manga-box px-5 py-3 bg-white text-black dark:bg-[#111114] dark:text-white hover:text-[#ff2a5f] font-mono text-xs font-black uppercase tracking-widest flex items-center gap-2 active:translate-x-0.5 active:translate-y-0.5"
                 >
                   <FileText size={16} />
                   <span>DOWNLOAD CV (PDF)</span>
+                </a>
+                <a 
+                  href="/api/cv/docx" 
+                  className="manga-box px-5 py-3 bg-white text-black dark:bg-[#111114] dark:text-white hover:text-[#ff2a5f] font-mono text-xs font-black uppercase tracking-widest flex items-center gap-2 active:translate-x-0.5 active:translate-y-0.5"
+                >
+                  <FileText size={16} />
+                  <span>DOWNLOAD CV (WORD)</span>
                 </a>
               </div>
 
