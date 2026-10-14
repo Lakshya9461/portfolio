@@ -29,7 +29,8 @@ import {
   MapPin,
   Globe,
   Sun,
-  Moon
+  Moon,
+  Award
 } from "lucide-react";
 
 // Scroll reveal hook with zero layout shift
@@ -66,6 +67,50 @@ className={`transition-all duration-700 ease-out ${
       {...props}
     >
       {children}
+    </div>
+  );
+}
+
+// Skill bars that animate in on scroll
+function SkillBarsGroup({ groups }: {
+  groups: Array<{
+    category: string;
+    kanji: string;
+    skills: Array<{ name: string; pct: number; tip: string }>;
+  }>;
+}) {
+  const { ref, isVisible } = useScrollReveal();
+  return (
+    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+      {groups.map(({ category, kanji, skills }) => (
+        <div key={category} className="space-y-5">
+          <div className="flex items-center gap-3 border-b-2 border-black dark:border-white pb-2">
+            <span className="font-display text-sm font-black uppercase tracking-wider">{category}</span>
+            <span className="tankobon-label text-[10px] text-[#ff2a5f] opacity-80">「{kanji}」</span>
+          </div>
+          <div className="space-y-4">
+            {skills.map(({ name, pct, tip }) => (
+              <div key={name} className="space-y-1.5">
+                <div className="flex items-center justify-between font-mono text-xs font-bold">
+                  <span className="uppercase tracking-wide">{name}</span>
+                  <span
+                    className="tankobon-label text-[10px] text-[#ff2a5f] cursor-default"
+                    data-tooltip={tip}
+                  >
+                    {pct}%
+                  </span>
+                </div>
+                <div className="skill-bar-track">
+                  <div
+                    className={`skill-bar-fill${isVisible ? " revealed" : ""}`}
+                    style={{ "--skill-pct": `${pct}%` } as React.CSSProperties}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -204,8 +249,13 @@ export default function Home() {
                 </a>
               </li>
               <li>
+                <a href="#certifications" className="hover:text-[#ff2a5f] transition-colors flex items-center gap-1">
+                  <span className="text-[#ff2a5f]">05.</span> CREDS
+                </a>
+              </li>
+              <li>
                 <a href="#blog" className="hover:text-[#ff2a5f] transition-colors flex items-center gap-1">
-                  <span className="text-[#ff2a5f]">05.</span> SCROLLS
+                  <span className="text-[#ff2a5f]">06.</span> SCROLLS
                 </a>
               </li>
             </ul>
@@ -395,10 +445,11 @@ export default function Home() {
               THE ARSENAL
             </h2>
             <p className="text-base sm:text-lg opacity-85 max-w-2xl leading-relaxed">
-              Battle-tested tools, frameworks, and low-overhead runtimes powering reproducible AI models and resilient infrastructure.
+              Battle-tested tools, frameworks, and low-overhead runtimes powering reproducible ML models and resilient infrastructure.
             </p>
           </RevealSection>
 
+          {/* Icon Grid */}
           <RevealSection delay={80} className="w-full">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 sm:gap-6">
               {techArsenal.map((tech) => (
@@ -425,6 +476,60 @@ export default function Home() {
               ))}
             </div>
           </RevealSection>
+
+          {/* Skill Proficiency Matrix */}
+          <div className="space-y-6">
+            <div className="manga-box px-4 py-2 bg-black text-white dark:bg-white dark:text-black w-fit font-mono text-[10px] font-black uppercase tracking-widest">
+              PROFICIENCY MATRIX // 技能水準
+            </div>
+            <SkillBarsGroup groups={[
+              {
+                category: "LANGUAGES",
+                kanji: "言語",
+                skills: [
+                  { name: "Python",     pct: 90, tip: "Primary — ML pipelines, scripts, FastAPI" },
+                  { name: "JavaScript", pct: 85, tip: "Electron, Node.js, Next.js, REST APIs" },
+                  { name: "Dart",       pct: 75, tip: "Flutter (CashWand — 159 tests)" },
+                  { name: "C++",        pct: 70, tip: "C++20 — SentinelDNS core, systems work" },
+                  { name: "SQL",        pct: 65, tip: "SQLite, DBMS, MIMIC-IV data queries" },
+                ],
+              },
+              {
+                category: "ML / AI",
+                kanji: "機械学習",
+                skills: [
+                  { name: "Scikit-learn / XGBoost", pct: 85, tip: "Sepsis pipeline, AUROC 0.7935" },
+                  { name: "Pandas / NumPy",          pct: 88, tip: "Feature engineering, temporal windows" },
+                  { name: "PyTorch",                 pct: 72, tip: "LSTM sequence models, MIMIC-IV" },
+                  { name: "SHAP",                    pct: 68, tip: "Interpretability for clinical models" },
+                  { name: "Ollama",                  pct: 65, tip: "Local LLM serving (Qwen, DeepSeek)" },
+                ],
+              },
+              {
+                category: "INFRASTRUCTURE",
+                kanji: "基盤",
+                skills: [
+                  { name: "Linux (Debian/Arch)",    pct: 90, tip: "Daily driver, server, WSL2 prod" },
+                  { name: "Docker / Compose",       pct: 85, tip: "Self-hosted homelab, CI pipelines" },
+                  { name: "Git / GitHub",           pct: 90, tip: "Version control, feature branches, PRs" },
+                  { name: "Cloudflare + Tailscale", pct: 78, tip: "Zero-trust tunnels, zero public ports" },
+                  { name: "SSH / Networking",       pct: 75, tip: "TCP/IP, DNS, LAN, reverse proxies" },
+                ],
+              },
+              {
+                category: "FRAMEWORKS & TOOLS",
+                kanji: "フレームワーク",
+                skills: [
+                  { name: "Electron", pct: 82, tip: "Aegis Browser — renderer isolation, IPC" },
+                  { name: "Flutter",  pct: 75, tip: "CashWand — offline-first, SQLite, biometrics" },
+                  { name: "FastAPI",  pct: 68, tip: "REST API backends, async routes" },
+                  { name: "Next.js",  pct: 80, tip: "App Router, API routes, SSR/SSG" },
+                  { name: "Nginx",    pct: 72, tip: "Reverse proxy, gateway for LLM server" },
+                ],
+              },
+            ]} />
+          </div>
+
         </section>
 
         {/* Manga Chapter Divider 03 */}
@@ -702,7 +807,108 @@ export default function Home() {
         {/* Manga Chapter Divider 05 */}
         <div className="manga-chapter">
           <span className="manga-chapter-mark">◆</span>
-          <span className="manga-chapter-label">CHAPTER 05 // 巻物</span>
+          <span className="manga-chapter-label">CHAPTER 05 // 資格</span>
+          <span className="manga-chapter-title">CERTIFICATIONS & HONORS</span>
+          <span className="manga-chapter-meta hidden sm:inline">VERIFIED CREDENTIALS</span>
+        </div>
+
+        {/* Accent Highlight Rule */}
+        <div className="h-px w-full bg-[#ff2a5f] opacity-30" />
+
+        {/* Certifications Section */}
+        <section id="certifications" data-page="certifications" className="manga-page py-24 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto space-y-16 relative z-10">
+          <RevealSection className="max-w-2xl space-y-5">
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase">
+              CREDENTIALS
+            </h2>
+            <p className="text-base sm:text-lg opacity-85 leading-relaxed">
+              Official certifications, verified research compliance, and academic milestones.
+            </p>
+          </RevealSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl">
+            <RevealSection className="h-full">
+              <div className="manga-box p-6 sm:p-8 bg-white dark:bg-[#111114] flex flex-col justify-between h-full group hover:border-[#ff2a5f] transition-colors relative">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="manga-hanko px-2 py-0.5 text-[10px] font-black uppercase">
+                      SCORE 97%
+                    </span>
+                    <span className="font-mono text-xs text-[#ff2a5f] font-black uppercase tracking-wider">
+                      VERIFIED // 認証済
+                    </span>
+                  </div>
+
+                  <div className="flex items-start gap-4 pt-2">
+                    <div className="p-3 bg-neutral-100 dark:bg-neutral-900 border border-black dark:border-white shrink-0">
+                      <Award size={28} className="text-[#ff2a5f]" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black uppercase tracking-tight group-hover:text-[#ff2a5f] transition-colors leading-snug">
+                        CITI Program — Data or Specimens Only Research
+                      </h3>
+                      <p className="font-mono text-xs opacity-60 uppercase tracking-wider mt-1">
+                        CITI Program · Biomedical & Clinical Data Ethics
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-sm opacity-85 leading-relaxed font-normal pt-2">
+                    Verified certification covering ethical handling of human subject data, de-identification protocols, and research governance for clinical machine learning pipelines.
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-xs font-mono">
+                  <span className="opacity-60">SCORE: 97 / 100</span>
+                  <span className="tankobon-label text-[10px] text-[#ff2a5f]">RESEARCH COMPLIANCE</span>
+                </div>
+              </div>
+            </RevealSection>
+
+            <RevealSection delay={80} className="h-full">
+              <div className="manga-box p-6 sm:p-8 bg-white dark:bg-[#111114] flex flex-col justify-between h-full group hover:border-[#ff2a5f] transition-colors relative">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="manga-hanko px-2 py-0.5 text-[10px] font-black uppercase">
+                      RESEARCH LOG
+                    </span>
+                    <span className="font-mono text-xs text-[#ff2a5f] font-black uppercase tracking-wider">
+                      ACTIVE // 継続中
+                    </span>
+                  </div>
+
+                  <div className="flex items-start gap-4 pt-2">
+                    <div className="p-3 bg-neutral-100 dark:bg-neutral-900 border border-black dark:border-white shrink-0">
+                      <Brain size={28} className="text-[#ff2a5f]" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-black uppercase tracking-tight group-hover:text-[#ff2a5f] transition-colors leading-snug">
+                        MIMIC-IV Sepsis Prediction Research
+                      </h3>
+                      <p className="font-mono text-xs opacity-60 uppercase tracking-wider mt-1">
+                        Supervised by Dr. Amit Sinhal · JKLU
+                      </p>
+                    </div>
+                  </div>
+
+                  <p className="text-sm opacity-85 leading-relaxed font-normal pt-2">
+                    Undergraduate research internship investigating 6-hour sepsis-3 prediction using patient-level GroupKFold validation, benchmarking XGBoost, Random Forest, and LSTM with AUROC 0.7935.
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-black/10 dark:border-white/10 flex items-center justify-between text-xs font-mono">
+                  <span className="opacity-60">AUROC: 0.7935</span>
+                  <span className="tankobon-label text-[10px] text-[#ff2a5f]">CLINICAL ML</span>
+                </div>
+              </div>
+            </RevealSection>
+          </div>
+        </section>
+
+        {/* Manga Chapter Divider 06 */}
+        <div className="manga-chapter">
+          <span className="manga-chapter-mark">◆</span>
+          <span className="manga-chapter-label">CHAPTER 06 // 巻物</span>
           <span className="manga-chapter-title">DISPATCHES & FIELD NOTES</span>
           <span className="manga-chapter-meta hidden sm:inline">PUBLIC FIELD NOTES</span>
         </div>
