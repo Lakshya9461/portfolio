@@ -1020,14 +1020,6 @@ export default function Home() {
               >
                 <Mail size={14} className="text-[#ff2a5f]" /> la9928609007@gmail.com
               </a>
-              <a 
-                href="https://lakshya9461.in" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="manga-box px-3 py-1.5 bg-white text-black dark:bg-[#111114] dark:text-white flex items-center gap-1.5 hover:text-[#ff2a5f] transition-colors"
-              >
-                <Globe size={14} className="text-[#ff2a5f]" /> lakshya9461.in
-              </a>
             </div>
 
             {/* Inked Comic Form */}
