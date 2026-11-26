@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import PortfolioHero from "@/components/ui/portfolio-hero";
 import { PageRibbon } from "@/components/ui/page-ribbon";
+import { useTheme } from "@/lib/theme";
 import { 
   SiPython, 
   SiPytorch, 
@@ -116,24 +117,7 @@ function SkillBarsGroup({ groups }: {
 }
 
 export default function Home() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark');
-    } else {
-      setIsDarkMode(!window.matchMedia('(prefers-color-scheme: light)').matches);
-    }
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.classList.remove('dark', 'light');
-    document.documentElement.classList.add(isDarkMode ? 'dark' : 'light');
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-  }, [isDarkMode]);
-
-  const toggleTheme = () => setIsDarkMode(!isDarkMode);
+  const { toggleTone, toggleSkin } = useTheme();
 
   // Contact form state
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -176,12 +160,12 @@ export default function Home() {
   const techArsenal = [
     { node: <SiPython size={44} className="text-[#ff2a5f]" />, title: "Python", slot: "01", tag: "AI/CORE" },
     { node: <SiPytorch size={44} className="text-[#ff2a5f]" />, title: "PyTorch", slot: "02", tag: "TENSORS" },
-    { node: <SiDocker size={44} className={isDarkMode ? "text-white" : "text-black"} />, title: "Docker", slot: "03", tag: "CONTAINERS" },
-    { node: <SiLinux size={44} className={isDarkMode ? "text-white" : "text-black"} />, title: "Linux", slot: "04", tag: "KERNEL/DEBIAN" },
+    { node: <SiDocker size={44} className="tech-icon" />, title: "Docker", slot: "03", tag: "CONTAINERS" },
+    { node: <SiLinux size={44} className="tech-icon" />, title: "Linux", slot: "04", tag: "KERNEL/DEBIAN" },
     { node: <SiNginx size={44} className="text-[#ff2a5f]" />, title: "Nginx", slot: "05", tag: "GATEWAY" },
-    { node: <SiNextdotjs size={44} className={isDarkMode ? "text-white" : "text-black"} />, title: "Next.js", slot: "06", tag: "FRONTEND" },
-    { node: <SiReact size={44} className={isDarkMode ? "text-white" : "text-black"} />, title: "React", slot: "07", tag: "CLIENT" },
-    { node: <SiTypescript size={44} className={isDarkMode ? "text-white" : "text-black"} />, title: "TypeScript", slot: "08", tag: "TYPED" },
+    { node: <SiNextdotjs size={44} className="tech-icon" />, title: "Next.js", slot: "06", tag: "FRONTEND" },
+    { node: <SiReact size={44} className="tech-icon" />, title: "React", slot: "07", tag: "CLIENT" },
+    { node: <SiTypescript size={44} className="tech-icon" />, title: "TypeScript", slot: "08", tag: "TYPED" },
     { node: <SiTailwindcss size={44} className="text-[#ff2a5f]" />, title: "Tailwind CSS", slot: "09", tag: "STYLING" },
     { node: <SiPostgresql size={44} className="text-[#ff2a5f]" />, title: "SQL & DBs", slot: "10", tag: "STORAGE" },
   ];
@@ -213,7 +197,9 @@ export default function Home() {
               className="flex items-center gap-3 cursor-pointer group"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              <span className="manga-hanko px-2 py-0.5 text-xs font-black">極</span>
+              <span className="manga-hanko px-2 py-0.5 text-xs font-black">
+                極
+              </span>
               <div className="flex flex-col">
                 <span 
                   className="font-display text-xl tracking-tighter uppercase leading-none group-hover:text-[#ff2a5f] transition-colors"
@@ -271,18 +257,26 @@ export default function Home() {
                 <span>DOSSIER</span>
               </a>
 
-              {/* Ink / Paper Tone Toggle */}
+              {/* Ink / Paper Tone Toggle (Synthetica is dark-only) */}
               <button 
-                onClick={toggleTheme} 
-                className="manga-box p-2 bg-white text-black dark:bg-[#111114] dark:text-white active:translate-x-1 active:translate-y-1 active:shadow-none"
-                aria-label="Toggle Manga Tone (Ink / Paper)"
-                title="Toggle Manga Tone"
+                onClick={toggleTone}
+                className="manga-box tone-toggle p-2 bg-white text-black dark:bg-[#111114] dark:text-white active:translate-x-1 active:translate-y-1 active:shadow-none"
+                aria-label="Toggle Tone (Ink / Paper)"
+                title="Toggle Tone"
               >
-                {isDarkMode ? (
-                  <Sun size={18} className="text-[#ff2a5f]" />
-                ) : (
-                  <Moon size={18} className="text-black" />
-                )}
+                <span className="tone-dark"><Sun size={18} className="text-[#ff2a5f]" /></span>
+                <span className="tone-light"><Moon size={18} className="text-black" /></span>
+              </button>
+
+              {/* Manga / Synthetica Skin Switch */}
+              <button
+                onClick={toggleSkin}
+                className="manga-box skin-toggle h-11 w-11 justify-center bg-white text-black dark:bg-[#111114] dark:text-white active:translate-x-1 active:translate-y-1 active:shadow-none"
+                aria-label="Switch visual theme (Manga / Synthetica)"
+                title="Switch visual theme"
+              >
+                <span className="skin-toggle__syn tankobon-label text-[10px]">SYN</span>
+                <span className="skin-toggle__manga tankobon-label text-[10px]">MNG</span>
               </button>
 
               {/* Inked Call To Action */}

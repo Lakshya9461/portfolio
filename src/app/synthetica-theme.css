@@ -1,0 +1,571 @@
+/* ============================================================
+   SYNTHETICA — brutalist instrument panel
+   Adapted from the Synthetica desktop theme: hard black, hairline
+   instrument grids, zero radii, mono type, and four signal colours.
+   Presentation only — every string and data item stays identical.
+   ============================================================ */
+
+html.theme-synthetica.dark {
+    color-scheme: dark;
+
+    --background: #000000;
+    --foreground: #e7dfdf;
+    --panel-bg: #000000;
+    --panel-border: #3e3e5d;
+    --panel-shadow: transparent;
+    --screentone-dot: rgba(128, 145, 162, 0.16);
+    --screentone-dot-subtle: rgba(128, 145, 162, 0.08);
+    --accent-red: #ec0042;
+    --accent-red-hover: #ff407d;
+    --card-bg: #000000;
+    --card-border: #3e3e5d;
+    --card-hover-bg: #050505;
+    --nav-bg: rgba(0, 0, 0, 0.94);
+    --nav-border: #3e3e5d;
+    --section-bg: #000000;
+    --section-border: #3e3e5d;
+    --input-bg: #000000;
+    --input-border: #6f6f92;
+    --input-hover-border: #ec0042;
+    --muted-text: #8091a2;
+    --chapter-bg: #000000;
+    --chapter-fg: #e7dfdf;
+
+    --grid-line: rgba(128, 145, 162, 0.1);
+    --grid-line-strong: #3e3e5d;
+
+    --font-sans: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    --font-display: 'Antonio', 'IBM Plex Mono', sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+/* @theme inline bakes the manga families into utilities — repoint them. */
+.theme-synthetica .font-display {
+    font-family: var(--font-display);
+}
+.theme-synthetica .font-sans,
+.theme-synthetica .font-mono {
+    font-family: var(--font-mono);
+}
+
+/* ─── Instrument-grid page surface ───────────────────────────────── */
+
+.theme-synthetica body {
+    background-color: var(--background);
+    background-image:
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.theme-synthetica .manga-halftone,
+.theme-synthetica .manga-halftone-subtle,
+.theme-synthetica .manga-halftone-dense {
+    background-image:
+        linear-gradient(to right, var(--grid-line-strong) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line-strong) 1px, transparent 1px);
+    background-size: 32px 32px;
+    opacity: 0.22;
+}
+
+.theme-synthetica .manga-speed-hatch {
+    background-image: repeating-linear-gradient(
+        to right,
+        transparent 0 15px,
+        var(--grid-line-strong) 15px 16px
+    );
+    border-radius: 0;
+    opacity: 0.18;
+}
+
+/* No manga page-turn: sections are instrument bays in normal flow. */
+html.theme-synthetica { scroll-snap-type: none; }
+.theme-synthetica .manga-page {
+    min-height: auto;
+    transform: none;
+    will-change: auto;
+}
+
+/* ─── Generic furniture: flat trays, no ink, no radii ────────────── */
+
+.theme-synthetica .manga-box,
+.theme-synthetica .manga-box-red {
+    border: 1px solid var(--panel-border);
+    border-radius: 0;
+    box-shadow: none;
+    background-color: #000000;
+    transition: border-color 120ms linear, background-color 120ms linear, color 120ms linear;
+}
+
+.theme-synthetica .manga-box:hover {
+    transform: none;
+    box-shadow: inset 3px 0 0 0 var(--accent-red);
+    border-color: var(--accent-red);
+}
+
+.theme-synthetica [class~="active:translate-x-1"]:active,
+.theme-synthetica [class~="active:translate-x-0.5"]:active {
+    transform: none;
+    box-shadow: none;
+}
+
+.theme-synthetica .manga-box-red {
+    border-color: var(--accent-red);
+    background-color: var(--accent-red);
+    color: #000000;
+}
+
+.theme-synthetica .manga-box-red:hover {
+    box-shadow: none;
+    background-color: var(--accent-red-hover);
+    color: #000000;
+}
+
+.theme-synthetica .manga-hanko {
+    border: 1px solid var(--accent-red);
+    border-radius: 0;
+    box-shadow: none;
+    color: var(--accent-red);
+    transform: none;
+    letter-spacing: 0.12em;
+}
+
+.theme-synthetica .tankobon-label {
+    letter-spacing: 0.14em;
+    font-weight: 600;
+}
+
+.theme-synthetica ::selection {
+    background: var(--accent-red);
+    color: #000000;
+}
+.theme-synthetica :focus-visible {
+    outline: 1px solid var(--accent-red);
+    outline-offset: 2px;
+}
+
+/* ─── Hardcoded manga colours, repointed ─────────────────────────── */
+
+.theme-synthetica [class~="text-[#ff2a5f]"],
+.theme-synthetica [class~="hover:text-[#ff2a5f]"]:hover,
+.theme-synthetica [class~="group-hover:text-[#ff2a5f]"]:hover {
+    color: var(--accent-red);
+}
+
+.theme-synthetica [class~="bg-[#ff2a5f]"] {
+    background-color: var(--accent-red);
+    color: #000000;
+}
+
+.theme-synthetica [class~="bg-white"],
+.theme-synthetica [class~="dark:bg-[#111114]"],
+.theme-synthetica [class~="bg-neutral-50"],
+.theme-synthetica [class~="bg-neutral-100"],
+.theme-synthetica [class~="dark:bg-neutral-900"],
+.theme-synthetica [class~="dark:bg-neutral-800"],
+.theme-synthetica [class*="bg-black/"],
+.theme-synthetica [class*="bg-white/"] {
+    background-color: #000000;
+}
+
+.theme-synthetica [class~="text-black"],
+.theme-synthetica [class~="dark:text-white"] {
+    color: var(--foreground);
+}
+
+.theme-synthetica [class~="border-black"],
+.theme-synthetica [class~="dark:border-white"],
+.theme-synthetica [class~="border-[#ff2a5f]"],
+.theme-synthetica [class*="border-black/"],
+.theme-synthetica [class*="border-white/"] {
+    border-color: var(--panel-border);
+}
+
+/* Signal plates win over the generic background rules. */
+.theme-synthetica [class~="bg-black"],
+.theme-synthetica [class~="dark:bg-white"] {
+    background-color: var(--accent-red);
+    color: #000000;
+    border-color: var(--accent-red);
+}
+
+/* ─── Navigation: terminal status bar ────────────────────────────── */
+
+.theme-synthetica header {
+    border-bottom-width: 1px;
+    border-color: var(--panel-border);
+    backdrop-filter: blur(2px);
+}
+
+.theme-synthetica header nav {
+    max-width: none;
+    height: 4.5rem;
+    padding-inline: clamp(1rem, 4vw, 3.5rem);
+    border-bottom: 1px solid var(--grid-line);
+}
+
+.theme-synthetica header ul {
+    gap: clamp(1rem, 2.4vw, 2rem);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+}
+
+.theme-synthetica header ul a {
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+}
+.theme-synthetica header ul a:hover {
+    border-bottom-color: var(--accent-red);
+}
+
+.theme-synthetica header ul a span:first-child {
+    color: var(--accent-red);
+    font-weight: 700;
+}
+
+.theme-synthetica header .manga-box {
+    min-height: 2.25rem;
+    padding-inline: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.theme-synthetica .skin-toggle {
+    justify-content: center;
+    color: var(--accent-red);
+    font-weight: 700;
+}
+
+/* Tone toggle is meaningless in a dark-only skin. */
+.theme-synthetica .tone-toggle { display: none; }
+
+/* Skin switch labels its destination, not the active skin. */
+.skin-toggle__manga { display: none; }
+.theme-synthetica .skin-toggle__syn { display: none; }
+.theme-synthetica .skin-toggle__manga { display: inline-flex; }
+
+/* ─── Hero: oversized outline wordmark ───────────────────────────── */
+
+.theme-synthetica .hero-cover {
+    min-height: 100svh;
+    border-bottom: 1px solid var(--panel-border);
+    background-color: #000000;
+}
+
+.theme-synthetica .hero-content {
+    width: 100%;
+    max-width: 1280px;
+    align-items: stretch;
+    text-align: left;
+}
+
+.theme-synthetica .hero-content > div:first-child {
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.theme-synthetica .hero-content > div:first-child .manga-box {
+    background-color: var(--accent-red);
+    border-color: var(--accent-red);
+    color: #000000;
+}
+
+.theme-synthetica .hero-title {
+    color: var(--foreground);
+    text-shadow: none;
+    font-size: clamp(4.5rem, 17vw, 13.5rem);
+    line-height: 0.82;
+    letter-spacing: -0.045em !important;
+}
+
+.theme-synthetica .hero-content > div:nth-child(2) {
+    margin-bottom: 2.5rem;
+}
+
+.theme-synthetica .hero-content > div:nth-child(2) > div:first-child {
+    justify-content: flex-start;
+    gap: 0.75rem;
+}
+
+.theme-synthetica .hero-content > div:nth-child(2) .tankobon-label {
+    color: var(--accent-red);
+}
+
+.theme-synthetica .hero-content > div:nth-child(3) .manga-box {
+    border-left: 3px solid var(--accent-red);
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    padding: 1.25rem 1.5rem;
+}
+
+.theme-synthetica .hero-content > div:nth-child(3) .manga-box > div:first-child {
+    top: -0.7rem;
+    left: 1.25rem;
+    border: 1px solid var(--panel-border);
+    background: #000000;
+    color: var(--foreground);
+}
+
+.theme-synthetica .hero-content > div:nth-child(3) .manga-box > div:last-child > div {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.theme-synthetica .hero-content > p {
+    border-left: 1px solid var(--panel-border);
+    padding-left: 1.25rem;
+    margin-inline: 0;
+    max-width: 48rem;
+}
+
+.theme-synthetica .hero-content > div:last-child {
+    justify-content: flex-start;
+    max-width: none;
+}
+.theme-synthetica .hero-content > div:last-child a:first-child {
+    background-color: var(--accent-red);
+    border-color: var(--accent-red);
+    color: #000000;
+}
+.theme-synthetica .hero-content > div:last-child a:first-child:hover {
+    background-color: var(--accent-red-hover);
+    color: #000000;
+}
+.theme-synthetica .hero-content > div:last-child a:last-child {
+    background-color: #000000;
+    color: var(--foreground);
+}
+
+.theme-synthetica .typewriter-cursor {
+    width: 0.55em;
+    height: 0.9em;
+    background: var(--accent-red);
+}
+
+.theme-synthetica .hero-cover > div:last-of-type {
+    left: clamp(1rem, 4vw, 3.5rem);
+    transform: none;
+}
+.theme-synthetica .hero-cover > div:last-of-type a {
+    background: #000000;
+    color: var(--foreground);
+    border-color: var(--panel-border);
+}
+
+/* ─── Chapter bands: instrument headers ──────────────────────────── */
+
+.theme-synthetica .manga-chapter {
+    border-top: 1px solid var(--panel-border);
+    border-bottom: 1px solid var(--panel-border);
+    background: #000000;
+    color: var(--foreground);
+    padding: 0.7rem clamp(1rem, 4vw, 3.5rem);
+    gap: 0.75rem;
+}
+
+.theme-synthetica .manga-chapter-mark {
+    color: var(--accent-red);
+    font-size: 0.6rem;
+}
+
+.theme-synthetica .manga-chapter-title {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+}
+
+.theme-synthetica .manga-chapter-meta {
+    color: var(--muted-text);
+    opacity: 1;
+}
+
+.theme-synthetica div[class~="opacity-30"][class~="bg-[#ff2a5f]"] {
+    background: linear-gradient(90deg, var(--accent-red), transparent 72%);
+    opacity: 1;
+}
+
+/* ─── Section headings and narrative ─────────────────────────────── */
+
+.theme-synthetica section h2.font-display,
+.theme-synthetica section h3.font-display {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+    line-height: 1;
+}
+
+.theme-synthetica section h2.font-display {
+    font-size: clamp(2.25rem, 5.2vw, 4.5rem);
+    border-left: 3px solid var(--accent-red);
+    padding-left: 1rem;
+}
+
+.theme-synthetica section h3.font-display {
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+}
+
+.theme-synthetica section p code {
+    background: #000000;
+    border-color: var(--panel-border);
+    color: var(--accent-red);
+}
+
+/* ─── Cards: flat instrument trays ───────────────────────────────── */
+
+.theme-synthetica .grid .manga-box {
+    padding: 1.25rem;
+}
+
+.theme-synthetica .manga-box .manga-halftone {
+    background-image: linear-gradient(135deg, var(--grid-line) 25%, transparent 25%);
+    background-size: 8px 8px;
+    opacity: 0.35;
+}
+
+.theme-synthetica .manga-box [class~="border-2"][class~="border-black"],
+.theme-synthetica .manga-box [class~="border-black"] {
+    border-width: 1px;
+    border-color: var(--panel-border);
+}
+
+.theme-synthetica [class~="group-hover:scale-110"] {
+    transform: none !important;
+}
+
+/* Skill matrix reads as calibrated instrument rows. */
+.theme-synthetica [class~="border-b-2"][class~="border-black"] {
+    border-bottom: 1px solid var(--panel-border);
+    padding-bottom: 0.5rem;
+}
+
+.theme-synthetica .skill-bar-track {
+    height: 2px;
+    border: 0;
+    background: var(--grid-line-strong);
+}
+
+.theme-synthetica .skill-bar-fill {
+    background: repeating-linear-gradient(
+        90deg,
+        var(--accent-red) 0 8px,
+        var(--accent-red-hover) 8px 10px
+    );
+}
+
+.theme-synthetica [data-tooltip]::after {
+    background: var(--accent-red);
+    color: #000000;
+    border: 0;
+    border-radius: 0;
+    letter-spacing: 0.12em;
+}
+
+/* ─── Timeline: sparse rail with square taps ─────────────────────── */
+
+.theme-synthetica [class~="border-l-[3px]"] {
+    border-left: 1px solid var(--panel-border);
+}
+
+.theme-synthetica [class*="-left-[35px]"],
+.theme-synthetica [class*="-left-[43px]"] {
+    width: 10px;
+    height: 10px;
+    border-radius: 0;
+    border: 0;
+    background: var(--accent-red);
+}
+
+/* ─── Project frames: monochrome specimen scans ──────────────────── */
+
+.theme-synthetica [class~="h-44"] img,
+.theme-synthetica [class~="h-48"] img {
+    filter: grayscale(1) contrast(1.45) brightness(0.72) !important;
+    transform: none !important;
+}
+
+.theme-synthetica [class~="h-44"],
+.theme-synthetica [class~="h-48"] {
+    border-width: 1px;
+    border-color: var(--panel-border);
+    background: #000000;
+}
+
+.theme-synthetica .grid [class~="tankobon-label"][class~="bg-neutral-100"],
+.theme-synthetica .grid [class~="tankobon-label"][class~="dark:bg-neutral-900"] {
+    border-color: var(--panel-border);
+    background: #000000;
+    color: var(--muted-text);
+}
+
+/* ─── Contact console ────────────────────────────────────────────── */
+
+.theme-synthetica form.manga-box {
+    border-top: 3px solid var(--accent-red);
+}
+
+.theme-synthetica form.manga-box [class~="bg-[#ff2a5f]/10"] {
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+    color: #000000;
+}
+
+.theme-synthetica input,
+.theme-synthetica textarea {
+    border: 1px solid var(--input-border);
+    border-radius: 0;
+    background: #000000;
+    color: var(--foreground);
+    font-family: var(--font-mono);
+}
+
+.theme-synthetica input:hover,
+.theme-synthetica textarea:hover {
+    border-color: var(--input-hover-border);
+}
+
+.theme-synthetica input:focus,
+.theme-synthetica textarea:focus {
+    outline: 1px solid var(--accent-red);
+    outline-offset: -1px;
+    box-shadow: inset 3px 0 0 0 var(--accent-red);
+}
+
+.theme-synthetica form.manga-box-red {
+    letter-spacing: 0.16em;
+}
+
+/* ─── Reader rail ────────────────────────────────────────────────── */
+
+.theme-synthetica .page-ribbon__rail {
+    width: 1px;
+    background: var(--grid-line-strong);
+}
+.theme-synthetica .page-ribbon__fill {
+    background: var(--accent-red);
+}
+.theme-synthetica .page-ribbon__tick {
+    width: 7px;
+    height: 7px;
+    border-radius: 0;
+    border: 1px solid var(--panel-border);
+    background: #000000;
+}
+.theme-synthetica .page-ribbon__tick[aria-current="true"] {
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+    transform: none;
+    box-shadow: 0 0 0 2px var(--grid-line-strong);
+}
+.theme-synthetica .page-ribbon__counter {
+    color: var(--accent-red);
+    font-family: var(--font-mono);
+    letter-spacing: 0.18em;
+}
+
+/* ─── Motion: no page-turn, only status blinks ───────────────────── */
+
+.theme-synthetica .hero-content,
+.theme-synthetica [class~="animate-bounce"] {
+    animation: none;
+}

@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 // @ts-ignore - allow importing global CSS as a side-effect; Next.js handles global CSS at runtime
 import "./globals.css";
+import "./synthetica-theme.css";
 import "@fontsource/dela-gothic-one";
 import "@fontsource/space-grotesk";
+import "@fontsource/antonio/latin-500.css";
+import "@fontsource/antonio/latin-700.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import "@fontsource/ibm-plex-mono/latin-600.css";
 
 export const metadata: Metadata = {
   title: "Lakshya Agarwal | 荒巻 — Inked Portfolio",
@@ -17,7 +22,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="dark scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#09090b" />

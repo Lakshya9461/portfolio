@@ -11,17 +11,9 @@ const roles = [
 ];
 
 export default function PortfolioHero() {
-  const [mounted, setMounted] = useState(false);
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    setIsDarkMode(savedTheme ? savedTheme === 'dark' : !window.matchMedia('(prefers-color-scheme: light)').matches);
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const currentFullText = roles[roleIndex].en;
@@ -30,26 +22,24 @@ export default function PortfolioHero() {
 
     if (!isDeleting) {
       if (displayedText.length < currentFullText.length) {
-        // Typing speed: 65ms per character
         timer = setTimeout(() => {
           setDisplayedText(currentFullText.slice(0, displayedText.length + 1));
         }, 65);
       } else {
-        // Pause at full word before deleting: 2200ms
         timer = setTimeout(() => {
           setIsDeleting(true);
         }, 2200);
       }
     } else {
       if (displayedText.length > 0) {
-        // Deleting speed: 35ms per character
         timer = setTimeout(() => {
           setDisplayedText(currentFullText.slice(0, displayedText.length - 1));
         }, 35);
       } else {
-        // Move to next role
-        setIsDeleting(false);
-        setRoleIndex((prev) => (prev + 1) % roles.length);
+        timer = setTimeout(() => {
+          setIsDeleting(false);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }, 0);
       }
     }
 
@@ -58,7 +48,7 @@ export default function PortfolioHero() {
 
   return (
     <div 
-      className="relative w-full min-h-[95vh] flex flex-col items-center justify-center overflow-hidden border-b-[3px] border-black dark:border-white select-none"
+      className="hero-cover relative w-full min-h-[95vh] flex flex-col items-center justify-center overflow-hidden border-b-[3px] border-black dark:border-white select-none"
       style={{ 
         backgroundColor: 'var(--background)',
         color: 'var(--foreground)'
@@ -88,7 +78,7 @@ export default function PortfolioHero() {
       </div>
 
       {/* Content Panel Frame */}
-      <div className={`relative z-20 flex flex-col items-center text-center max-w-5xl px-4 sm:px-6 transition-all duration-1000 transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <div className="hero-content relative z-20 flex flex-col items-center text-center max-w-5xl px-4 sm:px-6">
         
         {/* Manga Volume / Issue Header Banner */}
         <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
@@ -110,11 +100,8 @@ export default function PortfolioHero() {
           </div>
 
           <h1 
-            className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight leading-none uppercase font-black"
-            style={{ 
-              letterSpacing: "-0.04em",
-              textShadow: isDarkMode ? "4px 4px 0px #27272a" : "4px 4px 0px #d4d4d8"
-            }}
+            className="hero-title font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tight leading-none uppercase font-black"
+            style={{ letterSpacing: "-0.04em" }}
           >
             LAKSHYA
           </h1>

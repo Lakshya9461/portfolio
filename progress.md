@@ -66,5 +66,11 @@ Create a modern, premium developer portfolio website with a clean, minimal aesth
   - [x] Added fixed manga-reader page ribbon (right edge): progress rail, clickable page ticks, `VOL.n` counter.
   - [x] Disabled slideshow on mobile (normal vertical reading); respects `prefers-reduced-motion`.
 
+- [x] **Synthetica Skin**:
+  - [x] Added a second, persistent portfolio skin toggled from the navbar (`SYN` / `MNG`).
+  - [x] Rebuilt the presentation as a brutalist instrument panel: black/graphite grids, zero radii, hairline borders, Antonio + IBM Plex Mono, one red signal colour.
+  - [x] Kept every string and data item identical across both skins.
+  - [x] Centralised tone + skin state in `src/lib/theme.ts` (pre-hydration class application, no hydration flash).
+
 ---
-*Last updated: Redesigned full portfolio theme into an authentic Inked Manga Panel aesthetic with custom screentones, Dela Gothic typography, and comic gutter layouts.*
+*Last updated: Added Synthetica as a distinct switchable theme while preserving all portfolio content.*

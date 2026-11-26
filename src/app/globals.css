@@ -417,3 +417,24 @@ button, a {
   vertical-align: -0.1em;
   animation: typewriterBlink 0.85s steps(1) infinite;
 }
+
+/* ─── Hero (fade-only entrance) ─────────────────────────────────── */
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hero-content {
+  animation: heroFadeIn 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-title {
+  text-shadow: 4px 4px 0px #27272a;
+}
+:root.light .hero-title {
+  text-shadow: 4px 4px 0px #d4d4d8;
+}
+
+.tech-icon {
+  color: var(--foreground);
+}
