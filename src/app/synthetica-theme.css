@@ -1,7 +1,7 @@
 /* ============================================================
    SYNTHETICA — brutalist instrument panel
    Adapted from the Synthetica desktop theme: hard black, hairline
-   instrument grids, zero radii, mono type, and four signal colours.
+   instrument grids, zero radii, mono type, and one cyan signal colour.
    Presentation only — every string and data item stays identical.
    ============================================================ */
 
@@ -9,30 +9,30 @@ html.theme-synthetica.dark {
     color-scheme: dark;
 
     --background: #000000;
-    --foreground: #e7dfdf;
+    --foreground: #d3efef;
     --panel-bg: #000000;
-    --panel-border: #3e3e5d;
+    --panel-border: #2f4a52;
     --panel-shadow: transparent;
-    --screentone-dot: rgba(128, 145, 162, 0.16);
-    --screentone-dot-subtle: rgba(128, 145, 162, 0.08);
-    --accent-red: #ec0042;
-    --accent-red-hover: #ff407d;
+    --screentone-dot: rgba(0, 229, 255, 0.14);
+    --screentone-dot-subtle: rgba(0, 229, 255, 0.07);
+    --accent-red: #00e5ff;
+    --accent-red-hover: #6df3ff;
     --card-bg: #000000;
-    --card-border: #3e3e5d;
-    --card-hover-bg: #050505;
+    --card-border: #2f4a52;
+    --card-hover-bg: #050809;
     --nav-bg: rgba(0, 0, 0, 0.94);
-    --nav-border: #3e3e5d;
+    --nav-border: #2f4a52;
     --section-bg: #000000;
-    --section-border: #3e3e5d;
+    --section-border: #2f4a52;
     --input-bg: #000000;
     --input-border: #6f6f92;
-    --input-hover-border: #ec0042;
+    --input-hover-border: #00e5ff;
     --muted-text: #8091a2;
     --chapter-bg: #000000;
-    --chapter-fg: #e7dfdf;
+    --chapter-fg: #d3efef;
 
-    --grid-line: rgba(128, 145, 162, 0.1);
-    --grid-line-strong: #3e3e5d;
+    --grid-line: rgba(0, 229, 255, 0.08);
+    --grid-line-strong: #2f4a52;
 
     --font-sans: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
     --font-display: 'Antonio', 'IBM Plex Mono', sans-serif;
